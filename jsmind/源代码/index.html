@@ -1,0 +1,429 @@
+<style>
+  input {
+    font-size: 16px;
+  }
+
+  #main123 {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    padding-top: 4%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  [v-cloak] {
+    display: none;
+  }
+
+  .mainfooter {
+    width: 90%;
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+
+  .btnConfirm {
+    diaplay: block;
+    width: 15%;
+    height: 30%;
+    background: rgb(66, 139, 202);
+    line-height: 60%;
+    text-align: center;
+    border: none;
+    color: #fff;
+    border-radius: 3px;
+    font-weight: 700;
+  }
+
+  .btnConfirm:hover {
+    font-weight: 1000;
+    cursor: pointer;
+  }
+
+  #jsmind_container {
+    width: 90%;
+    height: 80%;
+    box-sizing: border-box;
+    background: #fff;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+  }
+
+  jmexpander {
+    line-height: 7px;
+  }
+
+  .pops {
+    position: absolute;
+    z-index: 3;
+  }
+
+  .pop1 {
+    width: 270px;
+    position: absolute;
+    z-index: 3;
+  }
+
+  .pop2 {
+    width: 100%;
+    height: 40px;
+    background: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px #aaa solid;
+    border-radius: 10px;
+    box-shadow: 0px 2px 7px -1px black;
+  }
+
+  .btn {
+    box-sizing: border-box;
+    width: 62px;
+    height: 40px;
+    float: left;
+    padding: 5px 0;
+    border-radius: 2px;
+    box-shadow: 0px 2px 7px -1px black;
+    color: #fff;
+    line-height: 30px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-bottom: 5px;
+  }
+
+  .btn:hover {
+    box-shadow: 0px 3px 7px -1px black;
+  }
+
+  /*mask*/
+
+  .mask {
+    width: 100%;
+    height: 100%;
+    min-width: 1000px;
+    min-height: 600px;
+    background: #eee;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .bounce-enter-active {
+    animation: bounce-in .3s;
+  }
+
+  .bounce-leave-active {
+    animation: bounce-out .3s;
+  }
+
+  @keyframes bounce-in {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes bounce-out {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+
+  .shadow-10 {
+    box-shadow: 0px 0px 10px 0px #999;
+    padding: 0px 20px;
+    border-radius: 8px;
+  }
+
+  .project {
+    background: #fff;
+    width: 70%;
+    height: 70%;
+    box-sizing: border-box;
+  }
+
+  .project-header {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .project-header span {
+    display: block;
+    height: 40px;
+    width: 200px;
+    box-sizing: border-box;
+    padding-left: 20px;
+    border-radius: 0px 30px 0px 0px;
+    background: #ddd;
+    line-height: 40px;
+    font-weight: 900;
+    font-size: 20px;
+  }
+
+  .project-header .search {
+    display: block;
+    width: 230px;
+    height: 30px;
+    line-height: 20px;
+    outline: none;
+    border-radius: 4px;
+    border: 2px burlywood solid;
+    padding-left: 10px;
+  }
+
+  .project-box {
+    width: 100%;
+    height: 70%;
+    border: 2px burlywood solid;
+    border-radius: 8px;
+    overflow-y: auto;
+  }
+
+  .project-box span {
+    display: block;
+    width: auto;
+    height: 20px;
+    float: left;
+    border-radius: 10px;
+    padding: 0 10px;
+    margin: 10px;
+    background: #f3f3ea;
+    line-height: 20px;
+    color: #157fcc;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .project-box span:hover {
+    background: rgb(66, 139, 202);
+    color: #fff;
+  }
+
+  .project-box span.active {
+    background: rgb(66, 139, 202);
+    color: #fff;
+  }
+
+  .project-footer {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .project-footer p {
+    font-size: 18px;
+  }
+
+  .project-footer p span {
+    border-radius: 10px;
+    padding: 0 10px;
+    background: rgb(66, 139, 202);
+    color: #fff;
+  }
+
+  .btnPreview {
+    width: 150px;
+    height: 30px;
+    border: none;
+    text-align: center;
+    outline: none;
+    border-radius: 4px;
+    font-size: 18px;
+    background: rgb(66, 139, 202);
+    color: #fff;
+  }
+
+  .btnPreview:hover {
+    background: rgb(66, 139, 202, 0.9);
+  }
+
+  .options {
+    width: 70%;
+    height: 12%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+  }
+
+  .select-box {
+    display: block;
+    width: 15%;
+    height: 60%;
+    box-sizing: border-box;
+    border: 2px burlywood solid;
+    border-radius: 4px;
+    outline: none;
+    padding-left: 10px;
+  }
+
+  .parameter {
+    width: 65%;
+    height: 60%;
+    box-sizing: border-box;
+    border: 2px burlywood solid;
+    border-radius: 4px;
+    outline: none;
+    padding-left: 10px;
+  }
+
+  .btn-box {
+    width: 70%;
+    height: 12%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .maskBtn {
+    width: 200px;
+    height: 40px;
+    border: none;
+    text-align: center;
+    outline: none;
+    border-radius: 4px;
+    font-size: 18px;
+  }
+
+  .btnTrue {
+    background: rgb(15, 208, 39);
+    color: #fff;
+    box-shadow: 0px 0px 5px 0px #999;
+  }
+
+  .btnTrue:hover {
+    background: rgba(15, 208, 39, 0.9);
+    color: #fff;
+  }
+
+  .btnFalse {
+    box-shadow: 0px 0px 5px 0px #999;
+    background: rgb(202, 202, 202);
+    color: #e76464;
+  }
+
+  .btnFalse:hover {
+    background: rgba(202, 202, 202, 0.9);
+    color: #e76464;
+  }
+
+  .pointer {
+    cursor: pointer;
+  }
+</style>
+<div id="main123">
+  <div id="jsmind_container" @contextmenu.stop="pop($event)" @click="reduction()"></div>
+  <div class='mainfooter' @click="reduction()">
+    <button @click="shuchu()" class="btnConfirm">确定</button>
+    <button @click="quxiao()" class="btnConfirm">取消</button>
+  </div>
+  <div class="pop1" v-if="popShow" v-bind:style="{left:clientX,top:clientY}" v-cloak>
+    <div class="btn" @click="add()" style="margin-right:7px;background:#7ab75d;" v-if="btnShow.a">
+      <div style="float:left;padding:3px;">
+        <img src="wb/images/jsmind/添加.png" width="24px" height="24px" />
+      </div>
+      <div style="float:left;">
+        添加
+      </div>
+    </div>
+    <div class="btn" @click="edit()" style="margin-right:7px;background:#d7c827;" v-if="btnShow.b">
+      <div style="float:left;padding:3px;">
+        <img src="wb/images/jsmind/编辑.png" width="24px" height="24px" />
+      </div>
+      <div style="float:left;">
+        编辑
+      </div>
+    </div>
+    <div class="btn" @click="catout()" style="margin-right:7px;background:#e37275;" v-if="btnShow.c">
+      <div style="float:left;padding:3px;">
+        <img src="wb/images/jsmind/删除.png" width="24px" height="24px" />
+      </div>
+      <div style="float:left;">
+        删除
+      </div>
+    </div>
+    <div class="btn" @click="assignment()" style="background:#e39b35;" v-if="btnShow.d">
+      <div style="float:left;padding:3px;">
+        <img src="wb/images/jsmind/编辑.png" width="24px" height="24px" />
+      </div>
+      <div style="float:left;">
+        赋值
+      </div>
+    </div>
+    <div class="pop2" v-if="assignmentPopShow">
+      <input type="text" placeholder="请输入赋值" v-model="assignmentTxt" />
+      <img src="wb/images/jsmind/确定.png" width="24px" height="24px" @click="confirmAssignment()" />
+      <img src="wb/images/jsmind/取消.png" width="24px" height="24px" @click="cancelAssignment()" />
+    </div>
+  </div>
+  <transition name="bounce">
+    <div class="mask" v-if="maskShow" v-cloak>
+      <div class="project shadow-10">
+        <div class="project-header">
+          <span>项目选择</span>
+          <input class="search" placeholder="搜索" v-model="searchTxt" />
+        </div>
+        <div class="project-box">
+          <span v-bind:class="{ active: isActive(item.id) }" :data-id="item.id" v-for="item in lists" @click="chooseTitle($event)">{{item.name}}</span>
+        </div>
+        <div class="project-footer">
+          <p>你已经选择
+            <span :style="{padding:titleObj.name?'0px 10px':'0px 0px'}">{{titleObj.name}}</span>
+          </p>
+          <button class="btnPreview pointer">预&nbsp;&nbsp;览</button>
+        </div>
+      </div>
+      <div class="options shadow-10">
+        <select class="select-box" name="order" v-model="order">
+          <option value="">请选择</option>
+          <option value="第一次">第一次</option>
+          <option value="均值">均值</option>
+          <option value="最后一次">最后一次</option>
+        </select>
+        <select class="select-box" name="symbol" v-model="symble">
+          <option value="">请选择</option>
+          <option value=">">></option>
+          <option value="<"><</option>
+          <option value="=">=</option>
+          <option value=">=">>=</option>
+          <option value="<=">=<</option>
+          <option value="包含">包含</option>
+          <option value="不包含">不包含</option>
+        </select>
+        <input class="parameter" placeholder="请输入参数" v-model="condition" />
+      </div>
+      <div class="btn-box" style="padding:0px 20px;border-radius: 8px;">
+        <button class="maskBtn btnTrue pointer" style="margin-right: 100px;" @click="addJsmind()">确&nbsp;&nbsp;定</button>
+        <button class="maskBtn btnFalse pointer" @click="closeMask()">取&nbsp;&nbsp;消</button>
+      </div>
+    </div>
+  </transition>
+</div>
