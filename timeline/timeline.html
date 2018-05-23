@@ -1,0 +1,3076 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="./plugins/smlct/css/iconfont.css" rel="stylesheet" />
+    <link href="./plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="./plugins/sweetalert/sweetalert.min.js"></script>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        user-select: none;
+      }
+      [v-cloak] { 
+        display: none
+      }
+      #main {
+        width: 100%;
+        max-width: 1700px;
+        min-width: 950px;
+        margin: 0px auto;
+        box-sizing: border-box;
+        position: relative;
+      }
+
+      .body-top {
+        width: 98%;
+        height: 635px;
+        margin: 10px auto;
+      }
+
+      .top-left {
+        width: 85%;
+        height: 100%;
+        float: left;
+      }
+
+      .top-left-top {
+        width: 100%;
+        height: 60px;
+        background: #f2f4f1;
+        border: 1px #d4dbd2 solid;
+        box-sizing: border-box;
+        cursor: default;
+      }
+
+      .message-left {
+        width: 80%;
+        height: 100%;
+        float: left;
+        color: #776f6f;
+        font-size: 13px;
+      }
+
+      .message {
+        height: 30px;
+        line-height: 30px;
+        padding: 0px 30px;
+        float: left;
+      }
+
+      .message-right {
+        width: 20%;
+        height: 100%;
+        float: right;
+        color: #776f6f;
+        font-size: 13px;
+        line-height: 30px;
+      }
+
+      .top-left-mid {
+        margin-top: 10px;
+        margin-bottom: 20px;
+        width: 100%;
+        height: 495px;
+      }
+
+      .top-left-mid-top {
+        width: 100%;
+        height: 55px;
+        box-sizing: border-box;
+        border: #d4dbd2 1px solid;
+        background: #f2f4f1;
+        border-bottom: none;
+        color: #879d87;
+        line-height: 45px;
+        font-size: 18px;
+      }
+
+      .health-btn {
+        width: 140px;
+        height: 30px;
+        background: #22a845;
+        color: #fff;
+        font-size: 13px;
+        text-align: center;
+        line-height: 30px;
+        border: none;
+        float: right;
+        margin: 12px 40px 0 0;
+        cursor: pointer;
+      }
+
+      .top-left-mid-bottom {
+        width: 100%;
+        height: 440px;
+        box-sizing: border-box;
+        border: #d4dbd2 1px solid;
+      }
+      /*---------------------------------------------------------------------------------------*/
+      /*时间轴*/
+      .timeline {
+        width: 98%;
+        height: 100%;
+        margin: 0px auto;
+        margin-top: 20px;
+      }
+
+      .ruler {
+        width: 100%;
+        height: 348px;
+        box-sizing: border-box;
+        background-image: url('./plugins/smlct/image/bgimg.png');
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      .rulerbody {
+        width: 1800px;
+        height: 84px;
+      }
+
+      .years {
+        display: block;
+        width: auto;
+        height: 84px;
+        box-sizing: border-box;
+        float: left;
+        user-select: none;
+        background: rgb(234, 242, 236) url('./plugins/smlct/image/nian.png') 0px 22px no-repeat;
+        position: relative;
+      }
+
+      .year {
+        width: 100%;
+        height: 21px;
+        color: #333;
+        font-size: 14px;
+        position: absolute;
+        background-color: #fff;
+        top: 0px;
+      }
+
+      .yearcord {
+        position: relative;
+        top: -16px;
+        width: 100%;
+        height: 63px;
+        box-sizing: border-box;
+        border-bottom: 3px rgb(220, 231, 221) solid;
+        border-top: 2px rgb(220, 231, 221) solid;
+      }
+      /*
+      .ysc {
+      width: 100px;
+      height: 127px;
+      background: url('./plugins/smlct/image/folder.png');
+      border-radius: 8px;
+      box-shadow: -6px 0px 6px -2px #999;
+      }
+
+      */
+
+      .ysc {
+        width: 100px;
+        height: 127px;
+        background: url('./plugins/smlct/image/folder2.png') -6px -3px no-repeat;
+        background-size: 112px 139px;
+        border-radius: 8px;
+      }
+      .main-img {
+        width: 100px;
+        height: 127px;
+      }
+
+      .img-header {
+        width: 80px;
+        height: 27px;
+        margin: 0px auto;
+        background: rgb(255, 192, 82);
+        border-radius: 5px 5px 0px 0px;
+        box-shadow: 0px 0px 8px 3px #999;
+        text-align: center;
+        line-height: 27px;
+        color: #fff;
+        font-size: 14px;
+      }
+
+      .img-body {
+        width: 100px;
+        height: 100px;
+        box-sizing: border-box;
+        border: 2px solid rgb(255, 192, 82);
+        background: #fff;
+        border-radius: 4px;
+        box-shadow: 0px 3px 3px 2px #aaa;
+      }
+
+      .img-yuan {
+        width: 30px;
+        height: 15px;
+        background: rgb(255, 192, 82);
+        border-radius: 0px 0px 15px 15px;
+        margin: -1px auto;
+      }
+      .img-text{
+        width:88px;
+        height:15px;
+        line-height:15px;
+        margin:9px auto;
+        color:#fff;
+        font-size:13px;
+        text-align:center;
+        border-radius: 5px;
+      }
+      .mouths {
+        position: relative;
+        top: 20px;
+        width: 100%;
+        height: 64px;
+        box-sizing: border-box;
+        border-bottom: 3px rgb(220, 231, 221) solid;
+        border-top: 2px rgb(220, 231, 221) solid;
+      }
+
+      .mouth {
+        width: 8.333333%;
+        height: 60px;
+        float: left;
+        box-sizing: border-box;
+        background: url('./plugins/smlct/image/yue.png')0px -1px no-repeat;
+        color: #999;
+        font-size: 12px;
+        padding-left: 2px;
+        position: relative;
+      }
+
+      .store {
+        width: 100%;
+        height: 18px;
+        background: rgb(234, 242, 236);
+        position: absolute;
+        top: 21px;
+        left: 0px;
+        z-index: 99999999;
+      }
+
+      .store-item {
+        width: 50%;
+        height: 100%;
+      }
+
+      .left {
+        float: left
+      }
+
+      .right {
+        float: right;
+      }
+
+      .folderbody {
+        position: absolute;
+        width: 100%;
+        height: 200px;
+        top: 55px;
+        left: 0px;
+      }
+
+      .folder {
+        width: 1px;
+        position: absolute;
+        top: -1px;
+        left: -49px;
+      }
+
+      .folder-card {
+        width: 100px;
+        height: 127px;
+        border-radius: 8px;
+        font-size: 13px;
+        overflow: hidden;
+        box-shadow: -3px 0px 7px 0px #acc0b2;
+        background: url('./plugins/smlct/image/folder.png') 0px 0px no-repeat;
+      }
+
+      .years1 {
+        box-sizing: border-box;
+        height: 100%;
+        float: left;
+        user-select: none;
+        background: #fff;
+      }
+
+      .year1 {
+        width: 100%;
+        float: left;
+        height: 20px;
+        color: #333;
+        font-size: 14px;
+        background: #fff;
+      }
+
+      .mouths1 {
+        margin-top: 20px;
+        float: left;
+        height: 64px;
+        background: rgb(234, 242, 236) url('./plugins/smlct/image/yue.png') 0px -1px no-repeat;
+        box-sizing: border-box;
+        border-top: 2px rgb(220, 231, 221) solid;
+        border-bottom: 3px rgb(220, 231, 221) solid;
+        position: relative;
+      }
+
+      .mouth1 {
+        height: 60px;
+        box-sizing: border-box;
+        font-size: 14px;
+        color: black;
+        position: absolute;
+        top: -22px;
+      }
+
+      .days1 {
+        width: 5px;
+        height: 100%;
+        float: left;
+        position: relative;
+        color: #999;
+        font-size: 12px;
+        top: -1px;
+      }
+
+      .day1 {
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        background: url('./plugins/smlct/image/ri.png') 0px 1px no-repeat;
+        text-align: center;
+      }
+
+      .zhanshi {
+        position: relative;
+        width: 100%;
+        height: 200px;
+      }
+
+      .fiche {
+        width: 1px;
+        position: absolute;
+        top: -1px;
+        left: -49px;
+      }
+      .circle {
+        width: 6px;
+        height: 6px;
+        border-radius: 3px;
+        margin-left: 47px;
+        background: #e97035;
+      }
+
+      .line {
+        width: 2px;
+        height: 60px;
+        background: #e97035;
+        margin-left: 49px;
+      }
+
+      .triangle {
+
+        border-bottom: 4px solid #e97035;
+        border-left: 3px solid transparent;
+        border-right: 3px solid transparent;
+        width: 10px;
+        margin-left: 45px;
+      }
+      /*时间轴卡片*/
+      .card {
+        width: 100px;
+        border-radius: 4px;
+        font-size: 13px;
+        box-shadow: 0px 0px 8px 2px #acc0b2;
+      }
+
+      .header {
+        width: 100%;
+        height: 40px;
+        background: #e97035;
+        font-size: 14px;
+        color: #fff;
+        line-height: 40px;
+        position: relative;
+      }
+      /*.header:hover>.man-popup {
+      display: block;
+      }*/
+      .item-h {
+        width: 100%;
+        height: 40px;
+      }
+
+      .img-h {
+        width: 30px;
+        height: 40px;
+        float: left;
+        line-height: 40px;
+        text-align: center;
+      }
+
+      .text-h {
+        width: 70px;
+        height: 40px;
+        float: left;
+        font-size: 13px;
+        cursor: pointer;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+      }
+
+      .item {
+        width: 100%;
+        height: 30px;
+        color: #6e766a;
+        background: rgb(242, 244, 241);
+      }
+
+      .img {
+        width: 28px;
+        height: 30px;
+        float: left;
+        text-align: center;
+      }
+
+      .list i {
+        color: #e97035;
+        line-height: 30px;
+        font-size: 12px;
+      }
+
+      .text {
+        width: 72px;
+        height: 30px;
+        line-height: 30px;
+        float: left;
+        cursor: pointer;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+      }
+      .thing-popup {
+        position: absolute;
+        top: 11px;
+        left: 60px;
+        width: 200px;
+        height: 250px;
+        border-radius: 4px;
+        box-shadow: 0px 0px 3px 2px #c6d0c5;
+        background: #fff;
+        z-index: 9999999999999999;
+      }
+
+      .thing-triangle {
+        width: 7px;
+        height: 7px;
+        transform: rotate(45deg);
+        box-shadow: -2px 2px 2px 0px #c6d0c5;
+        background: #fff;
+        position: absolute;
+        top: 50px;
+        left: -4px;
+      }
+      /*问卷弹窗样式*/
+      .thing-popup-ask {
+        position: absolute;
+        top: 124px;
+        left: 60px;
+        width: 150px;
+        height: 100px;
+        border-radius: 4px;
+        box-shadow: 0px 0px 3px 2px #c6d0c5;
+        background: #fff;
+        z-index: 9999999999999999;
+      }
+
+      .thing-triangle-ask {
+        width: 7px;
+        height: 7px;
+        transform: rotate(45deg);
+        box-shadow: -2px 2px 2px 0px #c6d0c5;
+        background: #fff;
+        position: absolute;
+        top: 46px;
+        left: -4px;
+      }
+      .thing-popup-ask-btn-box{
+        width: 150px;
+        height: 50px;
+        padding:10px 15px;
+      }
+      .thing-popup-ask-btn{
+        display: block;
+        outline: none;
+        border: none;
+        width: 120px;
+        height: 30px;
+        background: #f2f4f1;
+        cursor: pointer;
+        text-align: center;
+        line-height: 30px;
+        color: #22a845;
+      }
+      .thing-popup-ask-btn:hover{
+        color:#22a845;
+        font-weight:900;
+      }
+      .man-popup {
+        display: none;
+        position: absolute;
+        top: 1px;
+        left: 108px;
+        width: 150px;
+        height: 75px;
+        border-radius: 4px;
+        box-shadow: 0px 0px 3px 2px #c6d0c5;
+        background: #fff;
+        z-index: 9999999999999999;
+      }
+
+      .man-triangle {
+        width: 7px;
+        height: 7px;
+        transform: rotate(45deg);
+        box-shadow: -2px 2px 2px 0px #c6d0c5;
+        background: #fff;
+        position: absolute;
+        top: 14px;
+        left: -4px;
+      }
+      /*---------------------------------------------------------------------------------------*/
+
+      .top-left-mid-bottom-top {
+        width: 100%;
+        height: 355px;
+      }
+
+      .top-left-mid-bottom-buttom {
+        width: 100%;
+        height: 60px;
+        cursor: default;
+      }
+
+      .iconimg {
+        margin-left: 20px;
+        line-height: 60px;
+        color: #dbe6de;
+      }
+
+      .icontext {
+        margin-left: 5px;
+        margin-right: 25px;
+        line-height: 60px;
+        color: #8ba08a;
+      }
+
+      .see-btn {
+        display: block;
+        outline: none;
+        width: 150px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        background: #eaf2ec;
+        color: #22a845;
+        float: right;
+        margin-top: 15px;
+        margin-right: 40px;
+        border: none;
+        cursor: pointer;
+        background-repeat:no-repeat;
+        background-position:right center;
+        background-size:20px 20px;
+      }
+
+      .top-left-bottom {
+        width: 100%;
+        height: 50px;
+        background: #f2f4f1;
+        box-sizing: border-box;
+        border: 1px #bdc6bb solid;
+      }
+
+      .top-left-bottom-title {
+        width: 159px;
+        height: 100%;
+        border-right: 1px #bdc6bb solid;
+        line-height: 50px;
+        color: #7b8578;
+        text-align: center;
+        font-size: 16px;
+      }
+
+      .top-left-bottom-box {
+        width: 159px;
+        height: 20px;
+        margin-top: 15px;
+        border-right: 1px #bdc6bb solid;
+        text-align: center;
+        line-height: 20px;
+        color: #22a845;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      .top-right {
+        width: 14%;
+        height: 100%;
+        float: right;
+      }
+
+      .top-right-top {
+        width: 100%;
+        height: 60px;
+        background: #f2f4f1;
+        color: #879d87;
+        line-height: 60px;
+        text-align: center;
+        font-size: 16px;
+        border: 1px solid #bdc6bb;
+        border-bottom: none;
+        cursor: default;
+      }
+
+      .top-right-bottom {
+        width: 100%;
+        height: 575px;
+        border: 1px solid #bdc6bb;
+      }
+
+      .role-box {
+        width: 100%;
+        margin: 20px 1px;
+        height: 35px;
+      }
+
+      .role {
+        display: block;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        line-height: 20px;
+        float: left;
+        margin: 7.5px;
+        font-size: 12px;
+      }
+
+      .role-btn {
+        display: block;
+        width: 70%;
+        height: 35px;
+        border: none;
+        float: left;
+        outline: none;
+        cursor: pointer;
+      }
+
+      .body-bottom {
+        width: 95%;
+        height: 170px;
+        margin: 70px auto;
+        margin-bottom: 0px;
+        /*background: url('./plugins/smlct/image/store.png')100% 100% no-repeat;*/
+        background-size: 100% 100%;
+        cursor: default;
+      }
+
+      .status-strip {
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(to right, #abc452 0, #abc452 6.25%, #e9ca36 18.75%, #faa824 31.25%, #fe7526 43.75%, #f96b39 56.25%, #f36050 68.75%, #ee5863 81.25%, #ea5073 93.75%, #ea5073 100%);
+      }
+
+      .status-bar {
+        font-size:16px;
+        width: 12.5%;
+        height: 60px;
+        line-height: 64px;
+        text-align: center;
+        float: left;
+        color: #fff;
+      }
+
+      .strip-left {
+        width: 50%;
+        height: 100%;
+        float: left;
+        position: relative;
+      }
+
+      .strip-right {
+        width: 50%;
+        height: 100%;
+        float: left;
+        background: #fff;
+      }
+
+      .strip-img {
+        position: absolute;
+        top: -24px;
+        right: -8px;
+      }
+
+      .text-active {
+        font-size: 18px;
+        font-weight: bolder;
+        animation: myfirst 1.5s;
+        -moz-animation: myfirst 1.5s;
+        -webkit-animation: myfirst 1.5s;
+        -o-animation: myfirst 1.5s;
+        animation-iteration-count: infinite;
+      }
+      .body-bottom-main {
+        width: 100%;
+        height: 50px;
+      }
+
+      .body-bottom-header {
+        width: 100%;
+        height: 20px;
+      }
+
+      .body-bottom-body {
+        width: 100%;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+        font-size: 16px;
+      }
+
+      .body-bottom-footer {
+        width: 100%;
+        height: 10px;
+        line-height: 10px;
+        text-align: center;
+        font-size: 10px;
+      }
+
+      .qwe {
+        width: 95%;
+        height: 4px;
+        border: 1px black solid;
+        border-top: none;
+        margin: 8px auto;
+        position: relative;
+      }
+
+      .asd {
+        width: 0px;
+        height: 0px;
+        border-top: 4px black solid;
+        border-left: 3px transparent solid;
+        border-right: 3px transparent solid;
+        position: absolute;
+        top: 4px;
+        left: 50%;
+        transform: translateX(-2px)
+      }
+      @keyframes myfirst {
+        0% {
+          text-shadow: 0px 0px 1px #fff;
+        }
+        50% {
+          text-shadow: 0px 0px 1px #fff, 0 0 2px #fff, 0 0 3px #fff, 0 0 4px #fff, 0 0 5px #fff, 0 0 6px #fff, 0 0 7px #fff, 0 0 8px #fff, 0 0 9px #fff, 0 0 10px #fff, 0 0 11px #fff;
+        }
+        100% {
+          text-shadow: 0px 0px 1px #fff;
+        }
+      }
+      /*---------------------------------------------------------------------------------------*/
+      /*拖拉条*/
+      input[type=range] {
+        -webkit-appearance: none;
+        height: 10px;
+        border-radius: 5px;
+        position: absolute;
+        top: 0px;
+        background: #22a845;
+        outline: none;
+      }
+
+      input[type=range]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        height: 10px;
+        width: 10px;
+        background: #ffffff;
+        border-radius: 50%;
+        box-shadow: 0 0 1px 1px #3b4547;
+      }
+
+      input[type=range]::-moz-range-progress {
+        background: #22a845;
+        height: 10px;
+        border-radius: 5px;
+      }
+
+      input[type=range]::-ms-track {
+        height: 10px;
+        border-radius: 5px;
+        border-color: transparent;
+        color: transparent;
+      }
+
+      input[type=range]::-ms-thumb {
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+        background: #ffffff;
+        box-shadow: 0 0 1px 1px #3b4547;
+        cursor: pointer;
+      }
+
+      input[type=range]::-ms-fill-lower {
+        /*进度条已填充的部分*/
+        height: 10px;
+        border-radius: 5px;
+        background: #22a845;
+      }
+      /*-----------------------------------------------------------------------------------*/
+      /*---------------------------------------------------------------------------------------*/
+      /*遮罩&&弹窗*/
+      .maskBody {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        background: #6e766a;
+        opacity: 0.3;
+        z-index: 1;
+      }
+
+      .popup {
+        width: 55%;
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #fff;
+        border-radius: 3px;
+        z-index: 2;
+        box-sizing: border-box;
+      }
+
+      .popup-header {
+        width: 100%;
+        height: 50px;
+        background: rgb(228, 234, 228);
+        line-height: 50px;
+        font-size: 18px;
+        color: rgb(114, 129, 111);
+      }
+
+      .cancel:hover {
+        font-weight: 900;
+      }
+
+      .popup-choose {
+        width: 100%;
+        padding: 10px 2%;
+        height: 250px;
+        box-sizing: border-box;
+      }
+
+      .popup-choose-title {
+        width: 100%;
+        height: 40px;
+        border: 1px #899e88 solid;
+        background: #eef3ef;
+        box-sizing: border-box;
+        line-height: 38px;
+        padding-left: 10px;
+        color: #899e89;
+        font-size: 16px;
+      }
+
+      .popup-choose-btn {
+        width: 100%;
+        height: 40px;
+        box-sizing: border-box;
+        border-top: none;
+        border-bottom: none;
+        line-height: 40px;
+        color: #899e88;
+      }
+
+      .popup-choose-btn span {
+        display: block;
+        height: 40px;
+        background: #fff;
+        float: left;
+        line-height: 38px;
+        font-size: 12px;
+        color: #555b53;
+        font-weight: 900;
+      }
+
+      .popup-btn {
+        display: block;
+        height: 30px;
+        border: none;
+        background: #fff;
+        outline: none;
+        float: left;
+        line-height: 30px;
+        margin: 5px 20px;
+        font-size: 13px;
+        color: rgb(114, 129, 111);
+        border-bottom: 2px #fff solid;
+        box-sizing: border-box;
+      }
+
+      .popup-btn-active {
+        display: block;
+        height: 30px;
+        border: none;
+        background: #fff;
+        outline: none;
+        float: left;
+        line-height: 29px;
+        margin: 5px 20px;
+        font-size: 13px;
+        box-sizing: border-box;
+        color: #22a845;
+        font-weight: 900;
+        border-bottom: 2px #22a845 solid;
+      }
+
+      .popup-btn:hover {
+        color: #22a845;
+        font-weight: 900;
+        border-bottom: 2px #22a845 solid;
+        line-height: 29px;
+      }
+
+      .popup-choose-box {
+        width: 100%;
+        height: 150px;
+        border: 1px #899e88 solid;
+        box-sizing: border-box;
+        overflow-y: scroll;
+      }
+
+      .choose-btn {
+        display: block;
+        height: 30px;
+        line-height: 30px;
+        padding: 0px 20px;
+        float: left;
+        outline: none;
+        border: none;
+        border-radius: 15px;
+        background: #eef3ef;
+        margin: 2px;
+        color: #073a14;
+        position: relative;
+      }
+
+      .choose-btn span:hover {
+        color: #22a845;
+        font-weight: 900;
+      }
+
+      .messageBox {
+        position: absolute;
+        width: 100px;
+        height: 20px;
+        top: 34px;
+        left: 3px;
+        background: #fff;
+        box-shadow: 0px 0px 2px 1px #8fb88d;
+        z-index: 100;
+      }
+
+      .input-triangle {
+        top: -2px;
+        left: 18px;
+        width: 4px;
+        height: 4px;
+        transform: rotate(45deg);
+        background: #fff;
+        box-shadow: -1px -1px 1px 0px #8fb88d;
+        position: absolute;
+      }
+
+      .message-ipt {
+        display: block;
+        width: 60px;
+        height: 18px;
+        box-sizing: border-box;
+        margin: 1px;
+        float: left;
+        background: #fff;
+        border: none;
+        border-bottom: 1px #555b53 solid;
+        line-height: 17px;
+        font-size: 12px;
+        outline: none;
+      }
+
+      .input-true {
+        display: block;
+        width: 16px;
+        height: 16px;
+        color: #22a845;
+        margin: 2px 1px;
+        float: left;
+        line-height: 16px;
+      }
+
+      .input-false {
+        display: block;
+        width: 16px;
+        height: 16px;
+        float: left;
+        color: red;
+        margin: 2px 1px;
+        line-height: 16px;
+      }
+
+      .disabled {
+        cursor: not-allowed;
+        opacity: 0.6;
+      }
+
+      .popup-show {
+        width: 100%;
+        padding: 0px 2%;
+        height: 150px;
+        box-sizing: border-box;
+      }
+
+      .popup-show-title {
+        width: 100%;
+        height: 40px;
+        border: 1px #899e88 solid;
+        background: #eef3ef;
+        box-sizing: border-box;
+        line-height: 38px;
+        padding-left: 10px;
+        color: #899e89;
+        font-size: 16px;
+      }
+
+      .popup-show-box {
+        width: 100%;
+        height: 109px;
+        border: 1px #899e88 solid;
+        box-sizing: border-box;
+        border-top: none;
+        overflow-y: scroll;
+      }
+
+      .popup-show-span {
+        display: block;
+        height: 30px;
+        line-height: 30px;
+        padding: 0px 10px 0px 20px;
+        float: left;
+        border: none;
+        border-radius: 15px;
+        background: #eef3ef;
+        margin: 2px;
+        color: #073a14;
+        font-size: 12px;
+      }
+
+      .popup-show-clean {
+        line-height: 30px;
+        margin-left: 10px;
+        font-size: 12px;
+      }
+
+      .popup-show-clean:hover {
+        font-weight: 900;
+      }
+
+      .popup-btn-box {
+        width: 100%;
+        padding: 0px 2%;
+        height: 40px;
+        box-sizing: border-box;
+      }
+
+      .popup-btn-sb {
+        display: block;
+        width: 100px;
+        height: 30px;
+        border: none;
+        outline: none;
+        margin: 10px auto;
+        text-align: center;
+        line-height: 30px;
+        background: #22a845;
+        color: #fff;
+      }
+
+      .popup-btn-sb:hover {
+        font-weight: 900;
+      }
+
+      .popup-result-box {
+        width: 100%;
+        padding: 0px 2%;
+        height: 350px;
+        box-sizing: border-box;
+      }
+
+      .popup-result {
+        width: 100%;
+        height: 30px;
+        padding-left: 20px;
+        color: #899e88;
+        line-height: 30px;
+        font-size: 14px;
+      }
+
+      .popup-result-title {
+        width: 100%;
+        height: 40px;
+        border: 1px #899e88 solid;
+        background: #eef3ef;
+        box-sizing: border-box;
+        line-height: 38px;
+        color: #899e89;
+        font-size: 16px;
+      }
+
+      .popup-result-span {
+        height: 39px;
+        line-height: 39px;
+        font-size: 15px;
+        float: left;
+        padding: 0px 10px;
+      }
+
+      .popup-result-show {
+        width: 100%;
+        height: 210px;
+        border: 1px #899e88 solid;
+        border-top: none;
+        box-sizing: border-box;
+      }
+
+      .result-active {
+        background: #22a845;
+        color: #fff;
+      }
+      /*
+      2018/02/06 wangxiao 
+      */
+      .Level-active{
+        background: #22a845;
+        color: #fff;
+      }
+      .popup-Level-span{
+        float:left;
+        height:39px;
+        width:70px;
+        line-height:39px;
+        text-align:center;
+      }
+      .levelBox{
+        background:#eef3ef;
+        height:39px;
+        margin-bottom:8px;
+      }
+      .popup-btn-yf{
+        display:inline;
+        background: #22a845;
+        height:29px;
+        width:70px;
+        border: 0;
+        color: #fff;
+        margin: 0 10px;
+      }
+      .popup-btn-box-yf{
+        text-align:center;
+      }
+      /*////////////////////////////////////////////////////////////////*/
+      /*调查问卷样式*/
+      .popup-ask {
+        width: 150px;
+        height: 240px;
+        box-sizing: border-box;
+        top: -270px;
+        left: 10px;
+        border-radius: 4px;
+        position: relative;
+        box-shadow: 0px 0px 3px 2px #bacabd;
+        background: #fff;
+        padding: 5px 15px;
+      }
+
+      .item-ask {
+        width: 7px;
+        height: 7px;
+        transform: rotate(45deg);
+        box-shadow: 2px 2px 2px 0px #bacabd;
+        background: #fff;
+        position: absolute;
+        top: 237px;
+        left: 72px;
+      }
+
+      .btn-ask {
+        display: block;
+        outline: none;
+        border: none;
+        width: 120px;
+        height: 30px;
+        margin-top: 7px;
+        background: #f2f4f1;
+        cursor: pointer;
+      }
+
+      .btn-ask:hover {
+        font-weight: 900;
+        color: #22a845;
+      }
+      /*-------------------------------------------------------------------*/
+      .thingPopupP{
+        margin: 15px;
+        color:#3b4547;
+        font-size: 14px;
+        cursor: pointer;
+        word-wrap:break-word;
+      }
+      .thingPopupBtn{
+        display:block;
+        outline: none;
+        width: 80%;
+        height: 40px;
+        background: #22a845;
+        color: #fff;
+        text-align: center;
+        line-height: 40px;
+        font-size: 14px;
+        border:none;
+        margin: 10px auto;
+        cursor: pointer;
+        position:  absolute;
+        bottom:0;
+        left:20px;
+      }
+      .thingPopupBtn:hover{
+        font-weight: 900;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="main" v-cloak @click="popupAsk=false">
+      <div class="body-top">
+        <div class="top-left">
+          <div class="top-left-top">
+            <div class="message-left">
+              <div class="message"><span>姓名:</span><span>{{this.man.name}}</span></div>
+              <div class="message"><span>性别:</span><span>{{this.man.sex==1?'男':'女'}}</span></div>
+              <div class="message"><span>年龄:</span><span>{{this.man.age}}</span></div>
+              <div class="message"><span>身份证号:</span><span>{{this.man.id_Num}}</span></div>
+              <div class="message"><span>健康管理号:</span><span>{{this.man.health_Record_Id}}</span></div>
+              <div class="message">
+                <span>未来十年风险评估:</span>
+                <span style="margin-left:10px;padding:0px 20px;" :style="{background:futureRiskBackground(),color:futureRiskColor()}">{{this.man.futureRisk?this.man.futureRisk:'未生成'}}</span>
+              </div>
+            </div>
+            <div class="message-right">
+              <div style="float:right;margin-right:10px;"><span>目前所处阶段---</span><span>{{nowStore}}</span></div>
+            </div>
+          </div>
+          <div class="top-left-mid">
+            <div class="top-left-mid-top">
+              <div style="width:30%;height:100%;float:left;">
+                <i class="iconfont icon-addressbook2-copy" style="font-size:18px;margin-left:10px;"></i>
+                <span style="margin-left:5px;cursor: default;">接力式全程智能健康管理</span>
+              </div>
+              <div style="width:50%;height:100%;float:left;cursor: default;">
+                <div style="width:80%;height:20px; margin:6px auto; position: relative;">
+                  <span style="display:block;font-size:12px;height:100%;width:9.5%;float:left;line-height:20px;text-align:left;">0</span>
+                  <span style="display:block;font-size:12px;height:100%;width:9.5%;float:left;line-height:20px;text-align:left;">10</span>
+                  <span style="display:block;font-size:12px;height:100%;width:9.5%;float:left;line-height:20px;text-align:left;">20</span>
+                  <span style="display:block;font-size:12px;height:100%;width:9.5%;float:left;line-height:20px;text-align:left;">30</span>
+                  <span style="display:block;font-size:12px;height:100%;width:9.5%;float:left;line-height:20px;text-align:left;">40</span>
+                  <span style="display:block;font-size:12px;height:100%;width:9.5%;float:left;line-height:20px;text-align:left;">50</span>
+                  <span style="display:block;font-size:12px;height:100%;width:9.5%;float:left;line-height:20px;text-align:left;">60</span>
+                  <span style="display:block;font-size:12px;height:100%;width:9.5%;float:left;line-height:20px;text-align:left;">70</span>
+                  <span style="display:block;font-size:12px;height:100%;width:9.5%;float:left;line-height:20px;text-align:left;">80</span>
+                  <span style="display:block;font-size:12px;height:100%;width:9.5%;float:left;line-height:20px;text-align:left;">90</span>
+                  <span style="display:block;font-size:12px;height:100%;width:9.5%;line-height:20px;text-align:left;position: absolute;right:-22px;">100</span>
+                </div>
+                <div style="width:80%;height:10px;border-radius:5px;background:#ddd;margin:0px auto;position: relative;">
+                  <input class="range" :style="{width:`${age}%`}" type="range" :max="age*10" min="0" v-model="range" step="1">
+                </div>
+              </div>
+              <div style="width:20%;height:100%;float:left;">
+                <button class="health-btn" @click="checkHealthGuide()">综合健康干预指南</button>
+              </div>
+            </div>
+            <div class="top-left-mid-bottom">
+              <div class="top-left-mid-bottom-top">
+                <div class="timeline" @mousewheel.stop.prevent="zoom($event)" @wheel.stop.prevent="zoom($event)"  @click="thingPopupTime='',triangleTop=0">
+                  <div class="ruler" v-on:mousedown="mouseDown($event)" v-on:mousemove="mouseMove($event)" v-on:mouseUp="mouseUp()" v-on:mouseleave="move=false">
+                    <div v-if=" zoomNumber<9" class="rulerbody" :style="{width:`${rulerWidth*zoomNumber}px`,transform:`translateX(${(moveWidth-widthArr[115])*zoomNumber}px)`}">
+                      <div class="years" :data="list.show?'':list.year" :style="{width:`${list.len*zoomNumber}px`}" v-for="list in lists">
+                        <div class="year">{{list.year}}年</div>
+                        <div class="mouths" v-if="list.show">
+                          <div class="mouth" :style="{width:`${items.day.length*zoomNumber}px`}" v-for="items in list.mouths">
+                            <div class="store">
+                              <div class="store-item" v-for="store in items.store" :style="{position: 'absolute',left:`${store.left*100}%`,width:`${store.width*100}%`,background:getColor(store.name)}"></div>
+                            </div>
+                            <div v-text="zoomNumber>3?zoomNumber>9?`${list.year}年${items.mouth}月`:`${items.mouth}月`:items.mouth"></div>
+                            <div class="yearcord" v-if="zoomNumber==1">
+                              <div class="folder" style="top:55px;" v-if="items.thingY.length">
+                                <div class="circle"  class="line" style="background: rgb(255, 192, 82);"></div>
+                                <div class="line" style="background: rgb(255, 192, 82);"></div>
+                                <div class="triangle"  class="line" style="border-bottom-color: rgb(255, 192, 82);"></div>
+                                <div class="main-img">
+                                  <div class="img-header">
+                                    {{items.mouth-1}}月&nbsp;~&nbsp;{{items.mouth}}月
+                                  </div>
+                                  <div class="img-body">
+                                    <div class="img-yuan">
+                                    </div>
+                                    <div class="img-text" v-for="(item,index) in items.thingY" :style="{background:item.role[0].color}" v-if="index<3">{{item.role[0].roleName}}</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="folderbody" v-if="zoomNumber>1" v-for="item in items.thing" :style="{left:`${item.time.split('-')[2]* 10 / 10/(items.day.length)*100}%`}">
+                              <div class="folder" v-for="(son,key) in item.role" v-if="assignment(son.roleName)" :style="{zIndex:cordZindex==`${list.year*100000+items.mouth*1000+Number(item.time.split('-')[2])*10+key}`?'9999999999':`${list.year*100000+items.mouth*1000+Number(item.time.split('-')[2])*10+key}`}">
+                                <div class="circle" :style="{backgroundColor:son.color}"></div>
+                                <div class="line" :style="{height:items.mouth%2==0?`${60+key*50}px`:`${20+key*50}px`,backgroundColor:son.color}"></div>
+                                <div class="triangle" :style="{borderBottomColor:son.color}"></div>
+                                <div class="card" @click="folderClick(list.year*100000+items.mouth*1000+Number(item.time.split('-')[2])*10+key)">
+                                  <div class="header" >
+                                    <div class="item-h" :style="{backgroundColor:son.color}">
+                                      <div class="img-h">
+                                        <i class="iconfont  icon-yisheng"></i>
+                                      </div>
+                                      <div class="text-h" :title="son.roleName" v-text="son.roleName"></div>
+                                    </div>
+                                    <div class="man-popup">
+                                      <div class="man-triangle">
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="list">
+                                    <div class="item" v-for="(li,index) in son.thing" @dblclick.stop="project(items.mouth%2==0,key,index,li.typeId,li.recordId,item.time)">
+                                      <div class="img">
+                                        <i :class="getIcon(li.typeId)" :style="{color:son.color}"></i>
+                                      </div>
+                                      <div class="text" v-text="li.typeName" :title="li.typeName"></div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="thing-popup" v-if="thingPopupTime==item.time&&thingPopupType!=='WJ'&&thingPopupType!=='TJ'">
+                                <div class="thing-triangle" :style="{top:`${triangleTop}px`}">
+                                </div>
+                                <div v-if="thingPopupType=='RYJL'" style="height: 100%;margin-top: -15px;padding-top:15px;position:  relative;">
+                                  <p class="thingPopupP">入院机构：{{thingPopupDataRYJL.ORG_NAME?thingPopupDataRYJL.ORG_NAME:'(无记录)'}}</p>
+                                  <p class="thingPopupP">入院科室：{{thingPopupDataRYJL.DEP_NAME?thingPopupDataRYJL.DEP_NAME:'(无记录)'}}</p>
+                                  <p class="thingPopupP">入院天数：{{thingPopupDataRYJL.INPATIENT_DAY?thingPopupDataRYJL.INPATIENT_DAY:'(无记录)'}}</p>
+                                  <p class="thingPopupP">出院时间：{{thingPopupDataRYJL.DISCHARGE_DATE?thingPopupDataRYJL.DISCHARGE_DATE.substring(0,4):'无'}}-{{thingPopupDataRYJL.DISCHARGE_DATE?thingPopupDataRYJL.DISCHARGE_DATE.substring(4,6):'无'}}-{{thingPopupDataRYJL.DISCHARGE_DATE?thingPopupDataRYJL.DISCHARGE_DATE.substring(6,8):'无'}}</p>
+                                  <button class="thingPopupBtn" @click="popupSeeMoreApi(thingPopupDataRYJL.PAGE_ID,thingPopupDataRYJL.TYPE,thingPopupDataRYJL.ADMISSION_NUM)">查看详情</button>
+                                </div>
+                                <div v-if="thingPopupType=='MZJL'" style="height: 100%;margin-top: -15px;padding-top:15px;position:  relative;">
+                                  <p class="thingPopupP">就诊机构：{{thingPopupDataMZJL.ORG_NAME?thingPopupDataMZJL.ORG_NAME:'(无记录)'}}</p>
+                                  <p class="thingPopupP">就诊科室：{{thingPopupDataMZJL.DEP_NAME?thingPopupDataMZJL.DEP_NAME:'(无记录)'}}</p>
+                                  <p class="thingPopupP">就诊类型：{{thingPopupDataMZJL.REG_TYPE_NAME?thingPopupDataMZJL.REG_TYPE_NAME:'(无记录)'}}</p>
+                                  <p class="thingPopupP">就诊疾病：{{thingPopupDataMZJL.ADMIN_ILLNESS_NAME?thingPopupDataMZJL.ADMIN_ILLNESS_NAME:'(无记录)'}}</p>
+                                  <button class="thingPopupBtn" @click="popupSeeMoreApi(thingPopupDataMZJL.PAGE_ID,thingPopupDataMZJL.TYPE,thingPopupDataMZJL.OUTPATIENT_NUM)">查看详情</button>
+                                </div>
+                                <div v-if="thingPopupType=='GXYJBGL'" style="height: 100%;margin-top: -15px;padding-top:15px;position:  relative;">
+                                  <p class="thingPopupP">舒张压：{{thingPopupDataGXYJBGL.DIASTOLIC_PRESSURE?thingPopupDataGXYJBGL.DIASTOLIC_PRESSURE:'(无记录)'}}</p>
+                                  <p class="thingPopupP">收缩压：{{thingPopupDataGXYJBGL.SYSTOLIC_PRESSURE?thingPopupDataGXYJBGL.SYSTOLIC_PRESSURE:'(无记录)'}}</p>
+                                  <p class="thingPopupP">目标体质指数：{{thingPopupDataGXYJBGL.TARGET_BODY_INDEX?thingPopupDataGXYJBGL.TARGET_BODY_INDEX:'(无记录)'}}</p>
+                                  <p class="thingPopupP">当前体质指数：{{thingPopupDataGXYJBGL.BODY_INDEX?thingPopupDataGXYJBGL.BODY_INDEX:'(无记录)'}}</p>
+                                  <button class="thingPopupBtn" @click="popupSeeMoreApi(thingPopupDataGXYJBGL.PAGE_ID,thingPopupDataGXYJBGL.NAME,thingPopupDataGXYJBGL.JBGLURL)">查看详情</button>
+                                </div>
+                                <div v-if="thingPopupType=='TNBJBGL'" style="height: 100%;margin-top: -15px;padding-top:15px;position:  relative;">
+                                  <p class="thingPopupP">空腹血糖值：{{thingPopupDataTNBJBGL.FBG_VALUE?thingPopupDataTNBJBGL.FBG_VALUE:'(无记录)'}}</p>
+                                  <p class="thingPopupP">舒张压：{{thingPopupDataTNBJBGL.DBP?thingPopupDataTNBJBGL.DBP:'(无记录)'}}</p>
+                                  <p class="thingPopupP">收缩压：{{thingPopupDataTNBJBGL.SBP?thingPopupDataTNBJBGL.SBP:'(无记录)'}}</p>
+                                  <p class="thingPopupP">当前体质指数：{{thingPopupDataTNBJBGL.BMI?thingPopupDataTNBJBGL.BMI:'(无记录)'}}</p>
+                                  <button class="thingPopupBtn" @click="popupSeeMoreApi(thingPopupDataTNBJBGL.PAGE_ID,thingPopupDataTNBJBGL.NAME,thingPopupDataTNBJBGL.JBGLURL)">查看详情</button>
+                                </div>
+                                <div v-if="thingPopupType=='NCZJBGL'" style="height: 100%;margin-top: -15px;padding-top:15px;position:  relative;">
+                                  <p class="thingPopupP">发病时间：{{thingPopupDataNCZJBGL.ONSET_TIME?thingPopupDataNCZJBGL.ONSET_TIME:'(无记录)'}}</p>
+                                  <p class="thingPopupP">体征：{{thingPopupDataNCZJBGL.SING?thingPopupDataNCZJBGL.SING:'(无记录)'}}</p>
+                                  <p class="thingPopupP">治疗意见：{{thingPopupDataNCZJBGL.TREAT_IDEA?thingPopupDataNCZJBGL.TREAT_IDEA:'(无记录)'}}</p>
+                                  <button class="thingPopupBtn" @click="popupSeeMoreApi(thingPopupDataNCZJBGL.PAGE_ID,thingPopupDataNCZJBGL.NAME,thingPopupDataNCZJBGL.JBGLURL)">查看详情</button>
+                                </div>
+                                <div v-if="thingPopupType=='GXBJBGL'" style="height: 100%;margin-top: -15px;padding-top:15px;position:  relative;">
+                                  <p class="thingPopupP">发病时间：{{thingPopupDataGXBJBGL.ACCIDENT_DATE?thingPopupDataGXBJBGL.ACCIDENT_DATE:'(无记录)'}}</p>
+                                  <p class="thingPopupP">是否首次发病：{{thingPopupDataGXBJBGL.IS_FRIST_ATTACK?thingPopupDataGXBJBGL.IS_FRIST_ATTACK:'(无记录)'}}</p>
+                                  <p class="thingPopupP">冠心病诊断：{{thingPopupDataGXBJBGL.DIAGNOSISOFCHD?thingPopupDataGXBJBGL.DIAGNOSISOFCHD:'(无记录)'}}</p>
+                                  <p class="thingPopupP">诊断依据：{{thingPopupDataGXBJBGL.DIAGNOSTICBASIS?thingPopupDataGXBJBGL.DIAGNOSTICBASIS:'(无记录)'}}</p>
+                                  <button class="thingPopupBtn" @click="popupSeeMoreApi(thingPopupDataGXBJBGL.PAGE_ID,thingPopupDataGXBJBGL.NAME,thingPopupDataGXBJBGL.JBGLURL)">查看详情</button>
+                                </div>
+                                <div v-if="thingPopupType=='GY'"  style="height: 100%;margin-top: -15px;padding-top:15px;position:  relative;">
+                                  <p class="thingPopupP">制定人：{{thingPopupDataGY.DISPLAY_NAME?thingPopupDataGY.DISPLAY_NAME:'(无记录)'}}</p>
+                                  <p class="thingPopupP">开始时间：{{thingPopupDataGY.StartDate?thingPopupDataGY.StartDate:'(无记录)'}}</p>
+                                  <p class="thingPopupP">结束时间：{{thingPopupDataGY.EndDate?thingPopupDataGY.EndDate:'(无记录)'}}</p>
+                                  <button class="thingPopupBtn" @click="ckGyBook()">查看干预方案书</button>
+                                </div>
+                                <div v-if="thingPopupType=='ZNZD'"  style="height: 100%;margin-top: -15px;padding-top:15px;position:  relative;">
+                                  <p class="thingPopupP">诊断医生：{{thingPopupDataZNZD.DISPLAY_NAME}}</p>
+                                  <p class="thingPopupP">确诊疾病：{{thingPopupDataZNZD.QZJB==null?thingPopupDataZNZD.QZJB:'未确诊任何疾病'}}</p>
+                                  <button class="thingPopupBtn" @click="ckZNZD(thingPopupDataZNZD.PAGE_ID,thingPopupDataZNZD.ID)">查看详情</button>
+                                </div>
+                                <div v-if="thingPopupType=='JKGLJC'"  style="height: 100%;margin-top: -15px;padding-top:15px;position:  relative;">
+                                  <p class="thingPopupP">诊断医生：{{thingPopupDataJKGLJC.DISPLAY_NAME}}</p>
+                                  <p class="thingPopupP">预防等级：{{thingPopupDataJKGLJC.dj}}</p>
+                                  <button class="thingPopupBtn" @click="ckJKGLJC(thingPopupDataJKGLJC.PAGE_ID,thingPopupDataJKGLJC.url)">查看详情</button>
+                                </div>
+                              </div>
+
+                              <div class="thing-popup-ask" :style="{top:`${popupTop}px`}" v-if="thingPopupTime==item.time&&(thingPopupType=='WJ'||thingPopupType=='TJ')">
+                                <div class="thing-triangle-ask">
+                                </div>
+                                <div v-for="(value,index) in thingPopupList" class="thing-popup-ask-btn-box" v-if="thingPopupType=='WJ'">
+                                  <button :class="value==''?'disabled':''" class='thing-popup-ask-btn' :disabled="value==''" :title="value==''?'未生成':'调查问卷报告'" @click="thingPopupAsk(index,value)">{{index=='PGurl'?'查看评估报告':'查看调查问卷'}}</button>  
+                                </div>
+                                <!--div class="thing-popup-ask-btn-box" v-if="thingPopupType=='GY'"  style="margin-top:25px;">
+<button class='thing-popup-ask-btn' @click="ckGyBook()">查看干预方案书</button>  
+</div-->
+                                <div class="thing-popup-ask-btn-box" v-if="thingPopupType=='TJ'"   style="margin-top:25px;">
+                                  <button class='thing-popup-ask-btn' @click="ckTJBook()">查看体检结果</button>  
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div v-if=" zoomNumber>8" class="rulerbody" :style="{width:`${rulerWidth*zoomNumber}px`,transform:`translateX(${(moveWidth-widthArr[115])*zoomNumber}px)`}">
+                      <div class="years1" :data="list.show?'':list.year" :style="{width:`${list.len*zoomNumber}px`}" v-for="list in lists">
+                        <div class="mouths1" :style="{width:`${items.day.length*zoomNumber}px`}" v-for="items in list.mouths" v-if="list.show">
+                          <div class="mouth1">{{list.year}}年{{items.mouth}}月</div>
+                          <div class="days1" v-for="(item,key) in items.day" :style="{width:`${zoomNumber}px`}">
+                            <div class="day1"></div>
+                            <div class="store" :style="{background:getColor(item.store),borderRadius:item.start?'9px 0px 0px 9px':item.end?'0px 9px 9px 0px':'0px'}"></div>
+                            <div class="zhanshi" v-if="item.thing.length">
+                              <div class="fiche" v-for="(son,key) in item.thing[0].role" :style="{zIndex:cordZindex==list.year*100000+items.mouth*1000+Number(item.thing[0].time.split('-')[2])*10+key?999999999:list.year*100000+items.mouth*1000+Number(item.thing[0].time.split('-')[2])*10+key}"
+                                   v-if="assignment(son.roleName)">
+                                <div class="circle" :style="{backgroundColor:son.color}"></div>
+                                <div class="line" :style="{backgroundColor:son.color,height:item.thing[0].top?`${60+key*50}px`:`${20+key*50}px`}"></div>
+                                <div class="triangle" :style="{borderBottomColor:son.color}"></div>
+                                <div class="card" @click="folderClick(list.year*100000+items.mouth*1000+Number(item.thing[0].time.split('-')[2])*10+key)">
+                                  <div class="header">
+                                    <div class="item-h" :style="{backgroundColor:son.color}">
+                                      <div class="img-h">
+                                        <i class="iconfont  icon-yisheng"></i>
+                                      </div>
+                                      <div class="text-h" v-text="son.roleName"></div>
+                                    </div>
+                                    <div class="man-popup">
+                                      <div class="man-triangle">
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="list">
+                                    <div class="item" v-for="(li,index) in son.thing"  @dblclick.stop="project(item.thing[0].top,key,index,li.typeId,li.recordId,item.thing[0].time)">
+                                      <div class="img">
+                                        <i class="iconfont  icon-rect" :style="{color:son.color}"></i>
+                                      </div>
+                                      <div class="text" v-text="li.typeName"  :title="li.typeName"></div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="thing-popup" v-if="thingPopupTime==item.thing[0].time&&thingPopupType!=='WJ'&&thingPopupType!=='TJ'">
+                                <div class="thing-triangle" :style="{top:`${triangleTop}px`}">
+                                </div>
+                                <div v-if="thingPopupType=='RYJL'" style="height: 100%;margin-top: -15px;padding-top:15px;position:  relative;">
+                                  <p class="thingPopupP">入院机构：{{thingPopupDataRYJL.ORG_NAME?thingPopupDataRYJL.ORG_NAME:'(无记录)'}}</p>
+                                  <p class="thingPopupP">入院科室：{{thingPopupDataRYJL.DEP_NAME?thingPopupDataRYJL.DEP_NAME:'(无记录)'}}</p>
+                                  <p class="thingPopupP">入院天数：{{thingPopupDataRYJL.INPATIENT_DAY?thingPopupDataRYJL.INPATIENT_DAY:'(无记录)'}}</p>
+                                  <p class="thingPopupP">出院时间：{{thingPopupDataRYJL.DISCHARGE_DATE?thingPopupDataRYJL.DISCHARGE_DATE.substring(0,4):'无'}}-{{thingPopupDataRYJL.DISCHARGE_DATE?thingPopupDataRYJL.DISCHARGE_DATE.substring(4,6):'无'}}-{{thingPopupDataRYJL.DISCHARGE_DATE?thingPopupDataRYJL.DISCHARGE_DATE.substring(6,8):'无'}}</p>
+                                  <button class="thingPopupBtn" @click="popupSeeMoreApi(thingPopupDataRYJL.PAGE_ID,thingPopupDataRYJL.TYPE,thingPopupDataRYJL.ADMISSION_NUM)">查看详情</button>
+                                </div>
+                                <div v-if="thingPopupType=='MZJL'" style="height: 100%;margin-top: -15px;padding-top:15px;position:  relative;">
+                                  <p class="thingPopupP">就诊机构：{{thingPopupDataMZJL.ORG_NAME?thingPopupDataMZJL.ORG_NAME:'(无记录)'}}</p>
+                                  <p class="thingPopupP">就诊科室：{{thingPopupDataMZJL.DEP_NAME?thingPopupDataMZJL.DEP_NAME:'(无记录)'}}</p>
+                                  <p class="thingPopupP">就诊类型：{{thingPopupDataMZJL.REG_TYPE_NAME?thingPopupDataMZJL.REG_TYPE_NAME:'(无记录)'}}</p>
+                                  <p class="thingPopupP">就诊疾病：{{thingPopupDataMZJL.ADMIN_ILLNESS_NAME?thingPopupDataMZJL.ADMIN_ILLNESS_NAME:'(无记录)'}}</p>
+                                  <button class="thingPopupBtn" @click="popupSeeMoreApi(thingPopupDataMZJL.PAGE_ID,thingPopupDataMZJL.TYPE,thingPopupDataMZJL.OUTPATIENT_NUM)">查看详情</button>
+                                </div>
+                                <div v-if="thingPopupType=='GXYJBGL'" style="height: 100%;margin-top: -15px;padding-top:15px;position:  relative;">
+                                  <p class="thingPopupP">舒张压：{{thingPopupDataGXYJBGL.DIASTOLIC_PRESSURE?thingPopupDataGXYJBGL.DIASTOLIC_PRESSURE:'(无记录)'}}</p>
+                                  <p class="thingPopupP">收缩压：{{thingPopupDataGXYJBGL.SYSTOLIC_PRESSURE?thingPopupDataGXYJBGL.SYSTOLIC_PRESSURE:'(无记录)'}}</p>
+                                  <p class="thingPopupP">目标体质指数：{{thingPopupDataGXYJBGL.TARGET_BODY_INDEX?thingPopupDataGXYJBGL.TARGET_BODY_INDEX:'(无记录)'}}</p>
+                                  <p class="thingPopupP">当前体质指数：{{thingPopupDataGXYJBGL.BODY_INDEX?thingPopupDataGXYJBGL.BODY_INDEX:'(无记录)'}}</p>
+                                  <button class="thingPopupBtn" @click="popupSeeMoreApi(thingPopupDataGXYJBGL.PAGE_ID,thingPopupDataGXYJBGL.NAME,thingPopupDataGXYJBGL.JBGLURL)">查看详情</button>
+                                </div>
+                                <div v-if="thingPopupType=='TNBJBGL'" style="height: 100%;margin-top: -15px;padding-top:15px;position:  relative;">
+                                  <p class="thingPopupP">空腹血糖值：{{thingPopupDataTNBJBGL.FBG_VALUE?thingPopupDataTNBJBGL.FBG_VALUE:'(无记录)'}}</p>
+                                  <p class="thingPopupP">舒张压：{{thingPopupDataTNBJBGL.DBP?thingPopupDataTNBJBGL.DBP:'(无记录)'}}</p>
+                                  <p class="thingPopupP">收缩压：{{thingPopupDataTNBJBGL.SBP?thingPopupDataTNBJBGL.SBP:'(无记录)'}}</p>
+                                  <p class="thingPopupP">当前体质指数：{{thingPopupDataTNBJBGL.BMI?thingPopupDataTNBJBGL.BMI:'(无记录)'}}</p>
+                                  <button class="thingPopupBtn" @click="popupSeeMoreApi(thingPopupDataTNBJBGL.PAGE_ID,thingPopupDataTNBJBGL.NAME,thingPopupDataTNBJBGL.JBGLURL)">查看详情</button>
+                                </div>
+                                <div v-if="thingPopupType=='NCZJBGL'"  style="height: 100%;margin-top: -15px;padding-top:15px;position:  relative;">
+                                  <p class="thingPopupP">发病时间：{{thingPopupDataNCZJBGL.ONSET_TIME?thingPopupDataNCZJBGL.ONSET_TIME:'(无记录)'}}</p>
+                                  <p class="thingPopupP">体征：{{thingPopupDataNCZJBGL.SING?thingPopupDataNCZJBGL.SING:'(无记录)'}}</p>
+                                  <p class="thingPopupP">治疗意见：{{thingPopupDataNCZJBGL.TREAT_IDEA?thingPopupDataNCZJBGL.TREAT_IDEA:'(无记录)'}}</p>
+                                  <button class="thingPopupBtn" @click="popupSeeMoreApi(thingPopupDataNCZJBGL.PAGE_ID,thingPopupDataNCZJBGL.NAME,thingPopupDataNCZJBGL.JBGLURL)">查看详情</button>
+                                </div>
+                                <div v-if="thingPopupType=='GXBJBGL'"  style="height: 100%;margin-top: -15px;padding-top:15px;position:  relative;">
+                                  <p class="thingPopupP">发病时间：{{thingPopupDataGXBJBGL.ACCIDENT_DATE?thingPopupDataGXBJBGL.ACCIDENT_DATE:'(无记录)'}}</p>
+                                  <p class="thingPopupP">是否首次发病：{{thingPopupDataGXBJBGL.IS_FRIST_ATTACK?thingPopupDataGXBJBGL.IS_FRIST_ATTACK:'(无记录)'}}</p>
+                                  <p class="thingPopupP">冠心病诊断：{{thingPopupDataGXBJBGL.DIAGNOSISOFCHD?thingPopupDataGXBJBGL.DIAGNOSISOFCHD:'(无记录)'}}</p>
+                                  <p class="thingPopupP">诊断依据：{{thingPopupDataGXBJBGL.DIAGNOSTICBASIS?thingPopupDataGXBJBGL.DIAGNOSTICBASIS:'(无记录)'}}</p>
+                                  <button class="thingPopupBtn" @click="popupSeeMoreApi(thingPopupDataGXBJBGL.PAGE_ID,thingPopupDataGXBJBGL.NAME,thingPopupDataGXBJBGL.JBGLURL)">查看详情</button>
+                                </div>
+                                <div v-if="thingPopupType=='GY'"  style="height: 100%;margin-top: -15px;padding-top:15px;position:  relative;">
+                                  <p class="thingPopupP">制定人：{{thingPopupDataGY.DISPLAY_NAME?thingPopupDataGY.DISPLAY_NAME:'(无记录)'}}</p>
+                                  <p class="thingPopupP">开始时间：{{thingPopupDataGY.StartDate?thingPopupDataGY.StartDate:'(无记录)'}}</p>
+                                  <p class="thingPopupP">结束时间：{{thingPopupDataGY.EndDate?thingPopupDataGY.EndDate:'(无记录)'}}</p>
+                                  <button class="thingPopupBtn" @click="ckGyBook()">查看干预方案书</button>
+                                </div>
+                                <div v-if="thingPopupType=='ZNZD'"  style="height: 100%;margin-top: -15px;padding-top:15px;position:  relative;">
+                                  <p class="thingPopupP">诊断医生：{{thingPopupDataZNZD.DISPLAY_NAME}}</p>
+                                  <p class="thingPopupP">确诊疾病：{{thingPopupDataZNZD.QZJB==null?thingPopupDataZNZD.QZJB:'未确诊任何疾病'}}</p>
+                                  <button class="thingPopupBtn" @click="ckZNZD(thingPopupDataZNZD.PAGE_ID,thingPopupDataZNZD.ID)">查看详情</button>
+                                </div>
+                                <div v-if="thingPopupType=='JKGLJC'"  style="height: 100%;margin-top: -15px;padding-top:15px;position:  relative;">
+                                  <p class="thingPopupP">诊断医生：{{thingPopupDataJKGLJC.DISPLAY_NAME}}</p>
+                                  <p class="thingPopupP">预防等级：{{thingPopupDataJKGLJC.dj}}</p>
+                                  <button class="thingPopupBtn" @click="ckJKGLJC(thingPopupDataJKGLJC.PAGE_ID,thingPopupDataJKGLJC.url)">查看详情</button>
+                                </div>
+                              </div>
+                              <div class="thing-popup-ask" :style="{top:`${popupTop}px`}" v-if="thingPopupTime==item.thing[0].time&&(thingPopupType=='WJ'||thingPopupType=='TJ')">
+                                <div class="thing-triangle-ask">
+                                </div>
+                                <div v-for="(value,index) in thingPopupList" class="thing-popup-ask-btn-box" v-if="thingPopupType=='WJ'">
+                                  <button  :class="value==''?'disabled':''" class='thing-popup-ask-btn' :disabled="value==''" :title="value==''?'未生成':'调查问卷报告'"  class='thing-popup-ask-btn' @click="thingPopupAsk(index,value)">{{index=='PGurl'?'查看评估报告':'查看调查问卷'}}</button>  
+                                </div>
+                                <div class="thing-popup-ask-btn-box" v-if="thingPopupType=='TJ'"   style="margin-top:25px;">
+                                  <button class='thing-popup-ask-btn' @click="ckTJBook()">查看体检结果</button>  
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="top-left-mid-bottom-buttom">
+                <i class="iconfont  icon-rect iconimg"></i><span class="icontext">干预</span>
+                <i class="iconfont  icon-wuxing iconimg"></i><span class="icontext">随访</span>
+                <i class="iconfont  icon-circle iconimg"></i><span class="icontext">问卷</span>
+                <i class="iconfont  icon-wuguan iconimg"></i><span class="icontext">诊断</span>
+                <i class="iconfont  icon-bqxin iconimg"></i><span class="icontext">治疗</span>
+                <button class="see-btn" @click="watchPresentation()" :style="{backgroundImage:!havePresentation?`url('./plugins/smlct/image/123.gif')`:''}" v-text="havePresentation?'查看风险评估报告':'正在生成报告'">
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="top-left-bottom">
+            <div class="top-left-bottom-title left">添加健康记录</div>
+            <div class="top-left-bottom-box left" @click="InterventionLevel($event)">
+              <i class="iconfont icon-jia" style="margin-right:5px;"></i>
+              <span>健康干预</span>
+            </div>
+            <div class="top-left-bottom-box left" @click.stop="popupAsk=!popupAsk">
+              <i class="iconfont icon-jia" style="margin-right:5px;"></i>
+              <span>评估问卷</span>
+              <div class="popup-ask" v-if="popupAsk">
+                <div class="item-ask">
+                </div>
+                <button class="btn-ask" @click="addTab('245F1O3A0TOS','健康评估问卷',351)">健康评估问卷</button>
+                <button class="btn-ask" @click="addTab('241JAXUHD74D','生活方式问卷',321)">生活方式问卷</button>
+                <button class="btn-ask" @click="addTab('241JAXUHD70L','中医体质问卷',315)">中医体质问卷</button>
+                <button class="btn-ask" @click="addTab('245EFR6YG1BH','体适能评估问卷',331)">体适能评估问卷</button>
+                <button class="btn-ask" @click="addTab('245F1O3A0ZDB','营养评估问卷',341)">营养评估问卷</button>
+                <button class="btn-ask" @click="addTab('241KHDOLYK3L','心理评估问卷',311)">心理评估问卷</button>
+              </div>
+            </div>
+            <div class="top-left-bottom-box left" @click="intelligentDiagnosis()">
+              <i class="iconfont icon-jia" style="margin-right:5px;"></i>
+              <span>智能管理决策</span>
+            </div>
+            <div class="top-left-bottom-box left" @click="HealthManager()">
+
+              <i class="iconfont icon-jia" style="margin-right:5px;"></i>
+              <span>健康管理决策</span>
+            </div>
+            <!--div class="top-left-bottom-box left" @click="getDiagnosisApi()">
+<i class="iconfont icon-jia" style="margin-right:5px;"></i>
+<span>智能诊断</span>
+</div-->
+          </div>
+        </div>
+        <div class="top-right">
+          <div class="top-right-top">
+            <i class="iconfont  icon-yisheng"></i><span>全部角色</span>
+          </div>
+          <div class="top-right-bottom">
+            <div class="role-box">
+              <span class="role" :style="{background:!role.a?'#f2f4f1':'#e97035',color:!role.a?'#b7bcb5':'#fff'}">公</span>
+              <button class="role-btn" :style="{background:!role.a?'#f2f4f1':'#e97035',color:!role.a?'#b7bcb5':'#fff'}" @click="role.a=!role.a">公卫医师</button>
+            </div>
+
+            <div class="role-box">
+              <span class="role" :style="{background:!role.b?'#f2f4f1':'#e98e35',color:!role.b?'#b7bcb5':'#fff'}">全</span>
+              <button class="role-btn" :style="{background:!role.b?'#f2f4f1':'#e98e35',color:!role.b?'#b7bcb5':'#fff'}" @click="role.b=!role.b">全科/家庭医师</button>
+            </div>
+            <div class="role-box">
+              <span class="role" :style="{background:!role.c?'#f2f4f1':'rgb(125,201,53)',color:!role.c?'#b7bcb5':'#fff'}">社</span>
+              <button class="role-btn" :style="{background:!role.c?'#f2f4f1':'rgb(125,201,53)',color:!role.c?'#b7bcb5':'#fff'}" @click="role.c=!role.c">社区护师</button>
+            </div>
+            <div class="role-box">
+              <span class="role" :style="{background:!role.d?'#f2f4f1':'#c9bb45',color:!role.d?'#b7bcb5':'#fff'}">健</span>
+              <button class="role-btn" :style="{background:!role.d?'#f2f4f1':'#c9bb45',color:!role.d?'#b7bcb5':'#fff'}" @click="role.d=!role.d">健康体检师</button>
+            </div>
+            <div class="role-box">
+              <span class="role" :style="{background:!role.e?'#f2f4f1':'#61b395',color:!role.e?'#b7bcb5':'#fff'}">营</span>
+              <button class="role-btn" :style="{background:!role.e?'#f2f4f1':'#61b395',color:!role.e?'#b7bcb5':'#fff'}" @click="role.e=!role.e">营养师</button>
+            </div>
+            <div class="role-box">
+              <span class="role" :style="{background:!role.f?'#f2f4f1':'#75a2af',color:!role.f?'#b7bcb5':'#fff'}">运</span>
+              <button class="role-btn" :style="{background:!role.f?'#f2f4f1':'#75a2af',color:!role.f?'#b7bcb5':'#fff'}" @click="role.f=!role.f">运动师</button>
+            </div>
+            <div class="role-box">
+              <span class="role" :style="{background:!role.g?'#f2f4f1':'#868196',color:!role.g?'#b7bcb5':'#fff'}">心</span>
+              <button class="role-btn" :style="{background:!role.g?'#f2f4f1':'#868196',color:!role.g?'#b7bcb5':'#fff'}" @click="role.g=!role.g">心理医师</button>
+            </div>
+            <div class="role-box">
+              <span class="role" :style="{background:!role.h?'#f2f4f1':'#657ab5',color:!role.h?'#b7bcb5':'#fff'}">专</span>
+              <button class="role-btn" :style="{background:!role.h?'#f2f4f1':'#657ab5',color:!role.h?'#b7bcb5':'#fff'}" @click="role.h=!role.h">专科医师</button>
+            </div>
+            <div class="role-box">
+              <span class="role" :style="{background:!role.i?'#f2f4f1':'#7a56b0',color:!role.i?'#b7bcb5':'#fff'}">康</span>
+              <button class="role-btn" :style="{background:!role.i?'#f2f4f1':'#7a56b0',color:!role.i?'#b7bcb5':'#fff'}" @click="role.i=!role.i">康复医师</button>
+            </div>
+            <div class="role-box">
+              <span class="role" :style="{background:!role.j?'#f2f4f1':'#f2f4f1',color:!role.j?'#b7bcb5':'#b7bcb5'}">自</span>
+              <button class="role-btn" :style="{background:!role.j?'#f2f4f1':'#f2f4f1',color:!role.j?'#b7bcb5':'#b7bcb5'}" @click="role.j=!role.j">自我管理</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="body-bottom" style="background:url('./plugins/smlct/image/bg.png') no-repeat;backgroundSize:100% 60px;backgroundPosition:0px 4px;">
+        <div class="status-strip">
+          <div class="strip-left" :style="{width:getStoreWidthLeft()}">
+            <div class="strip-img"><img src="./plugins/smlct/image/person.png" /></div>
+          </div>
+          <div class="strip-right" :style="{width:getStoreWidthRight()}"></div>
+        </div>
+        <div :class="[`status-bar`,nowStore=='健康'?'text-active':'']" style="background:url('./plugins/smlct/image/0.png') no-repeat;backgroundPosition:center;" :style="{color:nowStore=='健康'?'#abc452':'#fff',backgroundSize:nowStore=='健康'?'100% 60px':'95% 45px'}">健康</div>
+        <div :class="[`status-bar`,nowStore=='低危状态'?'text-active':'']" style="background:url('./plugins/smlct/image/1.png') no-repeat;backgroundPosition:center;" :style="{color:nowStore=='低危状态'?'#e9ca36':'#fff',backgroundSize:nowStore=='低危状态'?'100% 60px':'95% 45px'}">低危状态</div>
+        <div :class="[`status-bar`,nowStore=='高危状态'?'text-active':'']" style="background:url('./plugins/smlct/image/2.png') no-repeat;backgroundPosition:center;" :style="{color:nowStore=='高危状态'?'#faa824':'#fff',backgroundSize:nowStore=='高危状态'?'100% 60px':'95% 45px'}">高危状态</div>
+        <div :class="[`status-bar`,nowStore=='早期血管病变'?'text-active':'']" style="background:url('./plugins/smlct/image/3.png') no-repeat;backgroundPosition:center;" :style="{color:nowStore=='早期血管病变'?'#fe7526':'#fff',backgroundSize:nowStore=='早期血管病变'?'100% 60px':'95% 45px'}">早期血管病变</div>
+        <div :class="[`status-bar`,nowStore=='临床症状'?'text-active':'']" style="background:url('./plugins/smlct/image/4.png') no-repeat;backgroundPosition:center;" :style="{color:nowStore=='临床症状'?'#f96b39':'#fff',backgroundSize:nowStore=='临床症状'?'100% 60px':'95% 45px'}">临床症状</div>
+        <div :class="[`status-bar`,nowStore=='心脑血管病'?'text-active':'']" style="background:url('./plugins/smlct/image/5.png') no-repeat;backgroundPosition:center;" :style="{color:nowStore=='心脑血管病'?'#f36050':'#fff',backgroundSize:nowStore=='心脑血管病'?'100% 60px':'95% 45px'}">心脑血管病</div>
+        <div :class="[`status-bar`,nowStore=='转归'?'text-active':'']" style="background:url('./plugins/smlct/image/6.png') no-repeat;backgroundPosition:center;" :style="{color:nowStore=='转归'?'#ee5863':'#fff',backgroundSize:nowStore=='转归'?'100% 60px':'95% 45px'}">转归</div>
+        <div :class="[`status-bar`,nowStore=='临终关怀'?'text-active':'']" style="background:url('./plugins/smlct/image/7.png') no-repeat;backgroundPosition:center;" :style="{color:nowStore=='临终关怀'?'#ea5073':'#fff',backgroundSize:nowStore=='临终关怀'?'100% 60px':'95% 45px'}">临终关怀</div>
+        <div class="body-bottom-main">
+          <div style="width:12.5%;height:100%;float:left">
+            <div class="body-bottom-header">
+              <div class="qwe">
+                <div class="asd"></div>
+              </div>
+            </div>
+            <div class="body-bottom-body">零级预防</div>
+            <div class="body-bottom-footer">（群体健康教育）</div>
+          </div>
+          <div style="width:25%;height:100%;float:left">
+            <div class="body-bottom-header">
+              <div class="qwe">
+                <div class="asd"></div>
+              </div>
+            </div>
+            <div class="body-bottom-body">一级预防</div>
+            <div class="body-bottom-footer">（个性化检测、评估、干预）</div>
+          </div>
+          <div style="width:18.75%;height:100%;float:left">
+            <div class="body-bottom-header">
+              <div class="qwe">
+                <div class="asd"></div>
+              </div>
+            </div>
+            <div class="body-bottom-body">二级预防</div>
+            <div class="body-bottom-footer">（筛查、早诊）</div>
+          </div>
+          <div style="width:18.75%;height:100%;float:left">
+            <div class="body-bottom-header">
+              <div class="qwe">
+                <div class="asd"></div>
+              </div>
+            </div>
+            <div class="body-bottom-body">临床诊疗</div>
+            <div class="body-bottom-footer">（个性化诊疗）</div>
+          </div>
+          <div style="width:12.5%;height:100%;float:left">
+            <div class="body-bottom-header">
+              <div class="qwe">
+                <div class="asd"></div>
+              </div>
+            </div>
+            <div class="body-bottom-body">三级预防</div>
+            <div class="body-bottom-footer">（病后康复）</div>
+          </div>
+          <div style="width:12.5%;height:100%;float:left">
+            <div class="body-bottom-header">
+              <div class="qwe">
+                <div class="asd"></div>
+              </div>
+            </div>
+            <div class="body-bottom-body">临终关怀</div>
+            <div class="body-bottom-footer">（临终关怀）</div>
+          </div>
+        </div>
+      </div>
+      <!--div class="maskBody" v-if="maskBoxShow">
+</div>
+<div class="popup" v-if="maskShow" @click="diagnosisInputId=''">
+<div class="popup-header">
+<span class="left" style="margin-left:20px;font-weight:900;font-size:18px;">添加智能诊疗决策</span>
+<i class="iconfont icon-cuohao right cancel" style="margin-right:20px;font-size:14px;" @click="maskShow=false,maskBoxShow=false,diagnosisType='主诉',diagnosisInputId='',diagnosisResultList=[]"></i>
+</div>
+<div class="popup-choose">
+<div class="popup-choose-title">智能决策变量筛选引擎</div>
+<div class="popup-choose-btn">
+<span>变量类型：</span>
+<button v-bind:class="[diagnosisType=='主诉'?'popup-btn-active':'popup-btn']" @click="chooseBox($event)">主诉</button>
+<button v-bind:class="[diagnosisType=='发病'?'popup-btn-active':'popup-btn']" @click="chooseBox($event)">发病</button>
+<button v-bind:class="[diagnosisType=='病史'?'popup-btn-active':'popup-btn']" @click="chooseBox($event)">病史</button>
+<button v-bind:class="[diagnosisType=='症状'?'popup-btn-active':'popup-btn']" @click="chooseBox($event)">症状</button>
+<button v-bind:class="[diagnosisType=='体征'?'popup-btn-active':'popup-btn']" @click="chooseBox($event)">体征</button>
+<button v-bind:class="[diagnosisType=='检验'?'popup-btn-active':'popup-btn']" @click="chooseBox($event)">检验</button>
+<button v-bind:class="[diagnosisType=='疾病'?'popup-btn-active':'popup-btn']" @click="chooseBox($event)">疾病</button>
+</div>
+<div class="popup-choose-box">
+<button :class="[item.disabledType?'disabled':'','choose-btn']" v-bind:disabled="item.disabledType" v-for="item in diagnosisChooseList" @click.stop="item.TYPE==2?record1(item.ID,item.VARNAME,item.TYPE):record2(item.ID)">
+<span>{{item.VARNAME}}</span>
+<i class="iconfont icon-bj" v-if="item.TYPE==1"></i>
+<div class="messageBox" v-if="item.TYPE==1&&diagnosisInputId==item.ID">
+<div class="input-triangle"></div>
+<input class="message-ipt" v-model="diagnosisMessage" placeholder="请输入" v-focus/>
+<i class="iconfont icon-duigou input-true" @click.stop="inputRecord(item.ID,item.VARNAME,item.TYPE)"></i>
+<i class="iconfont icon-cuowu input-false" @click.stop="inputClose()"></i>
+</div>
+</button>
+</div>
+</div>
+<div class="popup-show">
+<div class="popup-show-title">智能健康管理决策引擎</div>
+<div class="popup-show-box">
+<span class="popup-show-span" v-for="item in diagnosisResultList">
+{{item.VARNAME}}{{item.MESSAGE?':':''}}{{item.MESSAGE}}
+<i class="iconfont icon-cuohao popup-show-clean" @click="clean(item.VARNAME)"></i>
+</span>
+</div>
+</div>
+<div class="popup-btn-box">
+<button class="popup-btn-sb" @click="intelligenceRecord()">智能诊断</button>
+</div>
+<div class="popup-result-box">
+<div class="popup-result">
+智能诊断结果如下：
+</div>
+<div class="popup-result-title">
+<div :class="['popup-result-span',diagnosisResultId=='智能诊断建议/风险预测'?'result-active':'']" @click="resultId($event)">智能诊断建议/风险预测</div>
+<div :class="['popup-result-span',diagnosisResultId=='风险评估建议'?'result-active':'']" @click="resultId($event)">风险评估建议</div>
+<div :class="['popup-result-span',diagnosisResultId=='智能健康干预建议'?'result-active':'']" @click="resultId($event)">智能健康干预建议</div>
+</div>
+<div class="popup-result-show"></div>
+</div>
+</div-->
+    </div>
+
+    <script src="./plugins/smlct/js/babel.min.js"></script>
+    <script src="./plugins/smlct/js/vue.min.js"></script>
+    <script>
+      Vue.directive('focus', {
+        inserted: function(el) {
+          el.focus()
+        }
+      })
+      var timeline = new Vue({
+        el: '#main',
+        data: {
+          pId:"{#pid#}",
+          manId:"{#ID_NO#}",
+          lists: [],
+          man: {},
+          rulerWidth: 0,
+          moveStart: 0,
+          move: false,
+          moveHistory: 0,
+          moveLength: 0,
+          zoomNumber: 1,
+          moveWidth: 0,
+          zoomNumber: 1,
+          zoomer: false,
+          widthArr: [],
+          listNum: 0,
+          listNow: 115,
+          age: 0,
+          range: 0,
+          role: {
+            a: true,
+            b: true,
+            c: true,
+            d: true,
+            e: true,
+            f: true,
+            g: true,
+            h: true,
+            i: true,
+          },
+          cordZindex: '',
+          nowStore: '',
+          //时间轴里面的弹窗
+          thingPopupTime: '',
+          triangleTop: 0,
+          popupTop:0,
+          thingPopupType:'',
+          thingPopupList:[],
+          //健康干预的recordId
+          recordIdGY:'',
+          //入院记录的弹窗结果
+          thingPopupDataRYJL:{},
+          //门诊记录弹窗结果
+          thingPopupDataMZJL:{},
+          //脑卒中随访
+          thingPopupDataNCZJBGL:{},
+          //糖尿病随访
+          thingPopupDataTNBJBGL:{},
+          //高血压随访
+          thingPopupDataGXYJBGL:{},
+          //冠心病随访
+          thingPopupDataGXBJBGL:{},
+          //健康干预
+          thingPopupDataGY:{},
+          //遮罩是否弹出
+          maskBoxShow:false,
+          //遮罩是否弹出
+          maskShow: false,
+          //智能诊断页
+          diagnosisType: '主诉',
+          //获取的选项们
+          diagnosisData: [],
+          //分类后选择框的总数组
+          diagnosisBoxList: [],
+          //选择展示出的数组
+          diagnosisChooseList: [],
+          //点击需要输入的按钮的id
+          diagnosisInputId: '',
+          //所输入的信息
+          diagnosisMessage: '',
+          //输入之后得到的数组
+          diagnosisResultList: [],
+          diagnosisResultId: '智能诊断建议/风险预测',
+          //问卷调查
+          popupAsk:false,
+          //风险评估报告生成
+          havePresentation:true
+        },
+        mounted() {
+          this.makeDateList()
+          //this.man=man[0]
+          //this.getRecord(this.lists)
+          //this.getNowStore()
+          //this.age=70
+          //this.range = (this.age - 1) * 10
+        },
+        methods: {
+          //生成日期表
+          makeDateList:function(){
+            var ymd = [];
+            var y = 1900;
+            for (var i = 1900; i < 2030; i++) {
+              var years = {};
+              years.year = i;
+              if (i % 400 == 0) {
+                years.len = 366
+              } else if (i % 100 !== 0 && i % 4 == 0) {
+                years.len = 366
+              } else {
+                years.len = 365
+              }
+              years.mouths = []
+              for (var j = 1; j < 13; j++) {
+                var m = {};
+                m.mouth = j;
+                if (j == 1 || j == 3 || j == 5 || j == 7 || j == 8 || j == 10 || j == 12) {
+                  m.day = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+                } else if (j == 4 || j == 6 || j == 9 || j == 11) {
+                  m.day = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+                } else {
+                  if (i % 400 == 0 || (i % 100 !== 0 && i % 4 == 0)) {
+                    m.day = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+                  } else {
+                    m.day = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28]
+                  }
+                }
+                years.mouths.push(m)
+              }
+              ymd.push(years)
+            }
+            this.lists=ymd
+            this.getApi()
+          },
+          //弹窗
+          mask:function(){
+            this.maskShow=true
+            window.scrollTo(0,0);
+          },
+          //获取个人数据
+          getApi:function(){
+            $.ajax({
+              url:"main?xwl=245B8CNVWHVE",
+              data:{"HEALTH_RECORD_ID":"{#pid#}","ID_NUM":"{#ID_NO#}"},
+              success:function(r){
+                var data= eval('(' + r + ')');
+                timeline.man=data[0]
+                console.log(data[0])
+                timeline.getRecord(timeline.lists)
+                timeline.getNowStore()
+                timeline.age=Number(data[0].age)
+                timeline.range = (timeline.age - 1) * 10
+              }
+            });
+          },
+          //生成病人风险的背景
+          futureRiskBackground:function(){
+            if(!this.man.futureRisk){
+              return '#f2f4f1'
+            }else if(this.man.futureRisk=='低风险'){
+              return '#22a845'
+            }else if(this.man.futureRisk=='中风险'){
+              return 'rgb(201, 187, 69)'
+            }else if(this.man.futureRisk=='高风险'){
+              return 'rgb(233, 112, 53)'
+            }
+          },
+          //生成病人风险的字体颜色
+          futureRiskColor:function(){
+            if(!this.man.futureRisk){
+              return '#776f6f'
+            }else{
+              return '#fff'
+            }
+          },
+          //准备步骤，把病人信息插入
+          getRecord: function(a) {
+            for (var i = 0; i < a.length; i++) {
+              for (var j = 0; j < a[i].mouths.length; j++) {
+                a[i].mouths[j].thing = []
+                a[i].mouths[j].thingY = []
+                a[i].mouths[j].store = []
+                for (var m = 0; m < a[i].mouths[j].day.length; m++) {
+                  a[i].mouths[j].day[m] = {
+                    thing: [],
+                    store: []
+                  }
+                }
+              }
+            }
+            var nowDate=new Date();
+            var dates=[];
+            for(var i=0,len=this.man.store.length;i<len;i++){
+              var endDate=this.man.store[i].end;
+              endDate=new Date(`${endDate} 00:00:00`).getTime()
+              dates.push(endDate)
+            }
+            var max = dates[0],
+                max_index=0;
+            for(var j=0,len=dates.length;i<len-1;i++){
+              if( max < arr[i] ){
+                max = arr[i];
+                max_index=i
+              }
+            }
+            if(this.man.store.length){
+            	this.man.store[max_index].end=`${nowDate.getFullYear()}-${nowDate.getMonth()+1}-${nowDate.getDate()}`
+            }
+            this.getData(this.man)
+          },
+          //给资料添加各种属性
+          getData: function(b) {
+            for (var n = 0; n < b.message.length; n++) {
+              var arr = b.message[n].time.split('-')
+              var y = arr[0] - 1900,
+                  m = arr[1] - 1,
+                  d = arr[2] - 1;
+              b.message[n].top = false
+              if (n % 2 == 0) {
+                b.message[n].top = true
+              }
+              this.lists[y].mouths[m].day[d].thing.push(b.message[n])
+            }
+            for (var n = 0; n < b.message.length; n++) {
+              var arr = b.message[n].time.split('-')
+              var y = arr[0] - 1900,
+                  m = arr[1] - 1;
+              this.lists[y].mouths[m].thing.push(b.message[n])
+              if (m % 2 == 0) {
+                this.lists[y].mouths[m + 1].thingY.push(b.message[n])
+              } else {
+                this.lists[y].mouths[m].thingY.push(b.message[n])
+              }
+            }
+            //增加月和日的所在状态
+            for (var n = 0; n < b.store.length; n++) {
+              var arrStart = b.store[n].start.split('-'),
+                  arrEnd = b.store[n].end.split('-'),
+                  ys = parseInt(arrStart[0]) - 1900,
+                  ye = parseInt(arrEnd[0]) - 1900,
+                  ms = parseInt(arrStart[1]) - 1,
+                  me = parseInt(arrEnd[1]) - 1,
+                  ds = parseInt(arrStart[2]) - 1,
+                  de = parseInt(arrEnd[2]) - 1;
+              //月
+              console.log(b.store)
+              if (arrEnd[0] - arrStart[0] == 0) {
+                if (ms == me) {
+                  this.lists[ys].mouths[ms].store.push({
+                    name: b.store[n].name,
+                    width: this.getTime(b.store[n].start, b.store[n].end) / this.lists[ys].mouths[ms].day.length,
+                    left: (this.getTime(`${arrStart[0]}-${arrStart[1]}-1`, b.store[n].start) - 1) / this.lists[ys].mouths[ms].day.length
+                  })
+                } else if (ms == me - 1) {
+                  this.lists[ys].mouths[ms].store.push({
+                    name: b.store[n].name,
+                    width: this.getTime(b.store[n].start, `${arrStart[0]}-${arrStart[1]}-${this.lists[ys].mouths[ms].day.length}`) / this.lists[ys].mouths[ms].day.length,
+                    left: 1 - this.getTime(b.store[n].start, `${arrStart[0]}-${arrStart[1]}-${this.lists[ys].mouths[ms].day.length}`) / this.lists[ys].mouths[ms].day.length
+                  })
+                  this.lists[ye].mouths[me].store.push({
+                    name: b.store[n].name,
+                    width: this.getTime(`${arrEnd[0]}-${arrEnd[1]}-1`, b.store[n].end) / this.lists[ye].mouths[me].day.length,
+                    left: 0
+                  })
+                } else {
+                  this.lists[ys].mouths[ms].store.push({
+                    name: b.store[n].name,
+                    width: this.getTime(b.store[n].start, `${arrStart[0]}-${arrStart[1]}-${this.lists[ys].mouths[ms].day.length}`) / this.lists[ys].mouths[ms].day.length,
+                    left: 1 - this.getTime(b.store[n].start, `${arrStart[0]}-${arrStart[1]}-${this.lists[ys].mouths[ms].day.length}`) / this.lists[ys].mouths[ms].day.length
+                  })
+                  for (var i = ms + 1; i < me; i++) {
+                    this.lists[ye].mouths[i].store.push({
+                      name: b.store[n].name,
+                      width: 1,
+                      left: 0
+                    })
+                  }
+                  this.lists[ye].mouths[me].store.push({
+                    name: b.store[n].name,
+                    width: this.getTime(`${arrEnd[0]}-${arrEnd[1]}-1`, b.store[n].end) / this.lists[ye].mouths[me].day.length,
+                    left: 0
+                  })
+                }
+              } else if (arrEnd[0] - arrStart[0] == 1) {
+                if (ms == 11) {
+                  this.lists[ys].mouths[ms].store.push({
+                    name: b.store[n].name,
+                    width: this.getTime(b.store[n].start, `${arrStart[0]}-${arrStart[1]}-${this.lists[ys].mouths[ms].day.length}`) / this.lists[ys].mouths[ms].day.length,
+                    left: 1 - this.getTime(b.store[n].start, `${arrStart[0]}-${arrStart[1]}-${this.lists[ys].mouths[ms].day.length}`) / this.lists[ys].mouths[ms].day.length
+                  })
+                } else {
+                  this.lists[ys].mouths[ms].store.push({
+                    name: b.store[n].name,
+                    width: this.getTime(b.store[n].start, `${arrStart[0]}-${arrStart[1]}-${this.lists[ys].mouths[ms].day.length}`) / this.lists[ys].mouths[ms].day.length,
+                    left: 1 - this.getTime(b.store[n].start, `${arrStart[0]}-${arrStart[1]}-${this.lists[ys].mouths[ms].day.length}`) / this.lists[ys].mouths[ms].day.length
+                  })
+                  for (var i = ms + 1; i < 12; i++) {
+                    this.lists[ys].mouths[i].store.push({
+                      name: b.store[n].name,
+                      width: 1,
+                      left: 0
+                    })
+                  }
+                }
+                if (me == 0) {
+                  this.lists[ye].mouths[me].store.push({
+                    name: b.store[n].name,
+                    width: this.getTime(`${arrEnd[0]}-${arrEnd[1]}-1`, b.store[n].end) / this.lists[ye].mouths[me].day.length,
+                    left: 0
+                  })
+                } else {
+                  for (var i = 0; i < me; i++) {
+                    this.lists[ye].mouths[i].store.push({
+                      name: b.store[n].name,
+                      width: 1,
+                      left: 0
+                    })
+                  }
+                  this.lists[ye].mouths[me].store.push({
+                    name: b.store[n].name,
+                    width: this.getTime(`${arrEnd[0]}-${arrEnd[1]}-1`, b.store[n].end) / this.lists[ye].mouths[me].day.length,
+                    left: 0
+                  })
+                }
+              } else {
+                if (ms == 11) {
+                  this.lists[ys].mouths[ms].store.push({
+                    name: b.store[n].name,
+                    width: this.getTime(b.store[n].start, `${arrStart[0]}-${arrStart[1]}-${this.lists[ys].mouths[ms].day.length}`) / this.lists[ys].mouths[ms].day.length,
+                    left: 1 - this.getTime(b.store[n].start, `${arrStart[0]}-${arrStart[1]}-${this.lists[ys].mouths[ms].day.length}`) / this.lists[ys].mouths[ms].day.length
+                  })
+                } else {
+                  this.lists[ys].mouths[ms].store.push({
+                    name: b.store[n].name,
+                    width: this.getTime(b.store[n].start, `${arrStart[0]}-${arrStart[1]}-${this.lists[ys].mouths[ms].day.length}`) / this.lists[ys].mouths[ms].day.length,
+                    left: 1 - this.getTime(b.store[n].start, `${arrStart[0]}-${arrStart[1]}-${this.lists[ys].mouths[ms].day.length}`) / this.lists[ys].mouths[ms].day.length
+                  })
+                  for (var i = ms + 1; i < 12; i++) {
+                    this.lists[ys].mouths[i].store.push({
+                      name: b.store[n].name,
+                      width: 1,
+                      left: 0
+                    })
+                  }
+                }
+                for (var i = ys + 1; i < ye; i++) {
+                  for (var j = 0; j < 12; j++) {
+                    this.lists[i].mouths[j].store.push({
+                      name: b.store[n].name,
+                      width: 1,
+                      left: 0
+                    })
+                  }
+                }
+                if (me == 0) {
+                  this.lists[ye].mouths[me].store.push({
+                    name: b.store[n].name,
+                    width: this.getTime(`${arrEnd[0]}-${arrEnd[1]}-1`, b.store[n].end) / this.lists[ye].mouths[me].day.length,
+                    left: 0
+                  })
+                } else {
+                  for (var i = 0; i < me; i++) {
+                    this.lists[ye].mouths[i].store.push({
+                      name: b.store[n].name,
+                      width: 1,
+                      left: 0
+                    })
+                  }
+                  this.lists[ye].mouths[me].store.push({
+                    name: b.store[n].name,
+                    width: this.getTime(`${arrEnd[0]}-${arrEnd[1]}-1`, b.store[n].end) / this.lists[ye].mouths[me].day.length,
+                    left: 0
+                  })
+                }
+
+              }
+              //日
+              if (arrEnd[0] - arrStart[0] == 0) {
+                if (me == ms) {
+                  for (var a1 = ds; a1 < de + 1; a1++) {
+                    if (a1 == de) {
+                      console.log(this.lists)
+                      this.lists[ys].mouths[ms].day[a1].end = true
+                    }
+                    if (a1 == ds) {
+                      this.lists[ys].mouths[ms].day[a1].start = true
+                    }
+                    this.lists[ys].mouths[ms].day[a1].store = b.store[n].name
+                  }
+                } else if (ms == me - 1) {
+                  for (var a1 = ds; a1 < this.lists[ys].mouths[ms].day.length; a1++) {
+                    if (a1 == ds) {
+                      this.lists[ys].mouths[ms].day[a1].start = true
+                    }
+                    this.lists[ys].mouths[ms].day[a1].store = b.store[n].name
+                  }
+                  //最后一个月
+                  for (var d1 = 0; d1 < de + 1; d1++) {
+                    if (d1 == de) {
+                      this.lists[ye].mouths[me].day[d1].end = true
+                    }
+                    this.lists[ye].mouths[me].day[d1].store = b.store[n].name
+                  }
+                } else {
+                  //开头的天
+                  for (var a1 = ds; a1 < this.lists[ys].mouths[ms].day.length; a1++) {
+                    if (a1 == ds) {
+                      this.lists[ys].mouths[ms].day[a1].start = true
+                    }
+                    this.lists[ys].mouths[ms].day[a1].store = b.store[n].name
+                  }
+                  //下一月到结束的上一月
+                  for (var b1 = ms + 1; b1 < me; b1++) {
+                    for (var c1 = 0; c1 < this.lists[ys].mouths[b1].day.length; c1++) {
+                      this.lists[ys].mouths[b1].day[c1].store = b.store[n].name
+                    }
+                  }
+                  //最后一个月
+                  for (var d1 = 0; d1 < de + 1; d1++) {
+                    if (d1 == de) {
+                      this.lists[ye].mouths[me].day[d1].end = true
+                    }
+                    this.lists[ys].mouths[me].day[d1].store = b.store[n].name
+                  }
+                }
+              } else if (arrEnd[0] - arrStart[0] == 1) {
+                if (ms == 11) {
+                  //开始的月
+                  for (var a1 = ds; a1 < this.lists[ys].mouths[ms].day.length; a1++) {
+                    if (a1 == ds) {
+                      this.lists[ys].mouths[ms].day[a1].start = true
+                    }
+                    this.lists[ys].mouths[ms].day[a1].store = b.store[n].name
+                  }
+                } else {
+                  //开始的月
+                  for (var a1 = ds; a1 < this.lists[ys].mouths[ms].day.length; a1++) {
+                    if (a1 == ds) {
+                      this.lists[ys].mouths[ms].day[a1].start = true
+                    }
+                    this.lists[ys].mouths[ms].day[a1].store = b.store[n].name
+                  }
+                  //开始月到年前
+                  for (var b1 = ms + 1; b1 < 12; b1++) {
+                    for (var c1 = 0; c1 < this.lists[ys].mouths[b1].day.length; c1++) {
+                      this.lists[ys].mouths[b1].day[c1].store = b.store[n].name
+                    }
+                  }
+                }
+                //年后到结束月
+                if (me > 0) {
+                  for (var d1 = 0; d1 < me; d1++) {
+                    for (var c1 = 0; c1 < this.lists[ye].mouths[d1].day.length; c1++) {
+                      this.lists[ye].mouths[d1].day[c1].store = b.store[n].name
+                    }
+                  }
+                  //结束月
+                  for (var e1 = 0; e1 < de + 1; e1++) {
+                    if (e1 == de) {
+                      this.lists[ye].mouths[me].day[e1].end = true
+                    }
+                    this.lists[ye].mouths[me].day[e1].store = b.store[n].name
+                  }
+                } else {
+                  for (var e1 = 0; e1 < de + 1; e1++) {
+                    if (e1 == de) {
+                      this.lists[ye].mouths[me].day[e1].end = true
+                    }
+                    this.lists[ye].mouths[me].day[e1].store = b.store[n].name
+                  }
+                }
+              } else {
+                if (ms == 11) {
+                  for (var a1 = ds; a1 < this.lists[ys].mouths[ms].day.length; a1++) {
+                    if (a1 == ds) {
+                      this.lists[ys].mouths[ms].day[a1].start = true
+                    }
+                    this.lists[ys].mouths[ms].day[a1].store = b.store[n].name
+                  }
+                } else {
+                  //开始的月
+                  for (var a1 = ds; a1 < this.lists[ys].mouths[ms].day.length; a1++) {
+                    if (a1 == ds) {
+                      this.lists[ys].mouths[ms].day[a1].start = true
+                    }
+                    this.lists[ys].mouths[ms].day[a1].store = b.store[n].name
+                  }
+                  //开始月到开始年前
+                  for (var b1 = ms + 1; b1 < 12; b1++) {
+                    for (var c1 = 0; c1 < this.lists[ys].mouths[b1].day.length; c1++) {
+                      this.lists[ys].mouths[b1].day[c1].store = b.store[n].name
+                    }
+                  }
+                }
+                //中间年份
+                for (var f1 = ys + 1; f1 < ye; f1++) {
+                  for (var g1 = 0; g1 < this.lists[f1].mouths.length; g1++) {
+                    for (var h1 = 0; h1 < this.lists[f1].mouths[g1].day.length; h1++) {
+                      this.lists[f1].mouths[g1].day[h1].store = b.store[n].name
+                    }
+                  }
+                }
+                //结束年后到结束月
+                if (me > 0) {
+                  for (var d1 = 0; d1 < me; d1++) {
+                    for (var c1 = 0; c1 < this.lists[ye].mouths[d1].day.length; c1++) {
+                      this.lists[ye].mouths[d1].day[c1].store = b.store[n].name
+                    }
+                    for (var e1 = 0; e1 < de + 1; e1++) {
+                      if (e1 == de) {
+                        this.lists[ye].mouths[me].day[e1].end = true
+                      }
+                      this.lists[ye].mouths[me].day[e1].store = b.store[n].name
+                    }
+                  }
+                } else {
+                  for (var e1 = 0; e1 < de + 1; e1++) {
+                    if (e1 == de) {
+                      this.lists[ye].mouths[me].day[e1].end = true
+                    }
+                    this.lists[ye].mouths[me].day[e1].store = b.store[n].name
+                  }
+                }
+              }
+            }
+            this.setShow()
+          },
+          //给每年添加是否显示月，日属性
+          setShow: function() {
+            for (var i = 0; i < this.lists.length; i++) {
+              this.lists[i].show = false
+            }
+            if (this.zoomNumber < 8) {
+              for (var j = this.listNow; j < this.listNow + 6; j++) {
+                this.lists[j].show = true
+              }
+            } else {
+              for (var j = this.listNow; j < this.listNow + 3; j++) {
+                this.lists[j].show = true
+              }
+            }
+            this.getWidth()
+          },
+          //获得各种宽度
+          getWidth: function() {
+            var listsLength = this.lists.length
+            for (var i = 0; i < listsLength; i++) {
+              this.rulerWidth = this.rulerWidth + this.lists[i].len
+              this.widthArr.push(this.rulerWidth)
+            }
+          },
+          //获取连个日期之间的天数
+
+          getTime: function(date1, date2) {
+            var type1 = typeof date1,
+                type2 = typeof date2;
+            if (type1 == 'string')
+              date1 = this.stringToTime(date1);
+            else if (date1.getTime)
+              date1 = date1.getTime();
+            if (type2 == 'string')
+              date2 = this.stringToTime(date2);
+            else if (date2.getTime)
+              date2 = date2.getTime();
+            return (date2 - date1) / 1000 / 60 / 60 / 24 + 1; //除1000是毫秒，不加是秒   
+          },
+          //字符串转成Time(dateDiff)所需方法   
+          stringToTime: function(string) {
+            var f = string.split(' ', 2);
+            var d = (f[0] ? f[0] : '').split('-', 3);
+            var t = (f[1] ? f[1] : '').split(':', 3);
+            return (new Date(
+              parseInt(d[0], 10) || null,
+              (parseInt(d[1], 10) || 1) - 1,
+              parseInt(d[2], 10) || null,
+              parseInt(t[0], 10) || null,
+              parseInt(t[1], 10) || null,
+              parseInt(t[2], 10) || null)).getTime();
+          },
+          //获得当前日期的状态
+          getNowStore: function() {
+            var nowDate = new Date(),
+                y = nowDate.getFullYear() - 1900,
+                m = nowDate.getMonth()+1 - 1,
+                d = nowDate.getDate() - 1;
+            //var nowDate = new Date().toLocaleDateString().split('/'),
+            //    y = nowDate[0] - 1900,
+            //    m = nowDate[1] - 1,
+            //    d = nowDate[2] - 1;
+            this.nowStore = this.lists[y].mouths[m].day[d].store;
+          },
+          //各种状态对应的颜色
+          getColor: function(name) {
+            if (name == '健康') {
+              return '#abc452'
+            } else if (name == '低危状态') {
+              return '#e9ca36'
+            } else if (name == '高危状态') {
+              return '#faa824'
+            } else if (name == '早期血管病变') {
+              return '#fe7526'
+            } else if (name == '临床症状') {
+              return '#f96b39'
+            } else if (name == '心脑血管病') {
+              return '#f36050'
+            } else if (name == '转归') {
+              return '#ee5863'
+            } else if (name == '临终关怀') {
+              return '#ea5073'
+            } else {
+              return 'rgb(234, 242, 236)'
+            }
+          },
+          //各种记录对应的图标
+          getIcon: function(typeId) {
+            var tail=typeId.substring(typeId.length - 2, typeId.length)
+            if (tail == 'GY'||tail == 'YF') {
+              return 'iconfont  icon-rect'
+            } else if (tail == 'GL') {
+              return 'iconfont  icon-wuxing'
+            } else if (tail == 'WJ') {
+              return 'iconfont  icon-circle'
+            } else if (tail == 'TJ'||tail == 'JC') {
+              return 'iconfont  icon-wuguan'
+            } else if (tail == 'JL') {
+              return 'iconfont  icon-bqxin'
+            } 
+          },
+          //综合健康干预指南
+          checkHealthGuide:function(){
+            $.ajax({
+              url:"main?xwl=241MBB2B61CC",
+              data:{"pirID":timeline.pId},
+              success:function(r){
+                var data = $.parseJSON(r);
+                if(data.rows.length === 0 ){ 
+                  swal("提示！", "未制定干预计划","error"); 
+                  return;
+                }else{
+                  $.ajax({
+                    url:'main?xwl=244MTVF6HOKH&pirID='+timeline.pId,
+                    type:'post',
+                    success:function(r){
+                      var data = r,
+                          sid = '';
+                      if(r == ''||r == null){
+                        sid = '-1';
+                      }else{
+                        sid=r;
+                      }
+                      var tab = parent.tab;
+                      tab.tabAdd({
+                        icon:'fa-book',		//font-awesome的图标名 默认fa-file
+                        id:'402',			//id不可重复
+                        title:'干预方案书',
+                        url:'main?xwl=244PHGGYF3AG&pirID='+timeline.pId +'&surveyid='+sid//'244PHGGYF3AG'原先连接（前面的连接于20180205修改用于出报告）
+                      });
+                    }
+                  });
+
+                }
+              }
+            });
+          },
+          //点击时间轴出的弹窗
+          project: function(b, k, i, typeId, recordId, time) {
+            this.thingPopupType=typeId.substring(typeId.length - 2, typeId.length)
+            if(this.thingPopupType=='WJ'){
+              $.ajax({
+                url:"main?xwl=245H114FTHYC",
+                data:{"recordId":recordId,'typeId':typeId,'pirId':timeline.pId},
+                success:function(r){
+                  var data =eval("("+r+")").data;
+                  timeline.thingPopupList=data[0]
+                  timeline.thingPopupTime = time
+                  timeline.popupTop = Number(b ? `${60 + k * 50}` : `${20 + k * 50}`) + i * 30 + 15;
+                }
+              });
+            }else if(this.thingPopupType=='TJ'){
+              timeline.thingPopupList='TJ'
+              timeline.thingPopupTime = time
+              timeline.recordIdGY=recordId
+              timeline.popupTop = Number(b ? `${60 + k * 50}` : `${20 + k * 50}`) + i * 30 + 15;
+            }else if(typeId=="ZNZD"){
+              this.timelinePopupApi("main?xwl=245NVETH1NVS",recordId,typeId,b,k,i,time)
+            }else if(typeId=="JKGLJC"){
+              this.timelinePopupApi("main?xwl=245SDWTGSV57",recordId,typeId,b,k,i,time)
+            }else if(typeId.substring(typeId.length - 4, typeId.length)=="JBGL"){
+              this.timelinePopupApi("main?xwl=245HCYZ7XPZD",recordId,typeId,b,k,i,time)
+            }else{
+              if(typeId=='RYJL'){
+                this.timelinePopupApi("main?xwl=245HCYZ7XPZF",recordId,typeId,b,k,i,time)
+              }else if(typeId=='MZJL'){
+                this.timelinePopupApi("main?xwl=245HCYZ7XPZI",recordId,typeId,b,k,i,time)
+              }else if(typeId=="GY"){
+                this.gyApi(recordId,typeId,b,k,i,time)
+              }
+            }
+          },
+          //时间轴弹窗健康干预api
+          gyApi:function(recordId,typeId,b,k,i,time){
+            $.ajax({
+              url:'main?xwl=245NGRGGUQH7',
+              data:{"recordId":recordId},
+              success:function(r){
+                var data =eval("("+r+")").data;
+                console.log(data[0])
+                timeline.recordIdGY = recordId
+                timeline.thingPopupType=typeId
+                timeline.thingPopupDataGY=data[0]
+                timeline.thingPopupTime = time
+                timeline.triangleTop = Number(b ? `${60+k*50}` : `${20+k*50}`) + i * 30 + 15 + 30
+              }
+            });
+          },
+          //时间轴弹窗api
+          timelinePopupApi:function(url,recordId,typeId,b,k,i,time){
+            debugger;
+            $.ajax({
+              url:url,
+              data:{"recordId":recordId,'typeId':typeId,'pirId':timeline.pId},
+              success:function(r){
+                var data =eval("("+r+")").data;
+                timeline.thingPopupType=typeId
+                if(typeId=='RYJL'){
+                  timeline.thingPopupDataRYJL=data[0]
+                }else if(typeId=='MZJL'){
+                  timeline.thingPopupDataMZJL=data[0]
+                }else if(timeline.thingPopupType=='GXYJBGL'){
+                  timeline.thingPopupDataGXYJBGL=data[0]
+                }else if(typeId=='NCZJBGL'){
+                  timeline.thingPopupDataNCZJBGL=data[0]
+                }else if(typeId=='TNBJBGL'){
+                  timeline.thingPopupDataTNBJBGL=data[0]
+                }else if(typeId=='GXBJBGL'){
+                  timeline.thingPopupDataGXBJBGL=data[0]
+                }else if(typeId=='ZNZD'){
+                  timeline.thingPopupDataZNZD=data[0]
+                }else if(typeId=="JKGLJC"){
+                  timeline.thingPopupDataJKGLJC=data[0]
+                }
+                timeline.thingPopupTime = time
+                timeline.triangleTop = Number(b ? `${60+k*50}` : `${20+k*50}`) + i * 30 + 15 + 30
+              }
+            });
+          },
+          //入弹窗查看更多
+          popupSeeMoreApi:function(id,title,url){
+            parent.tab.tabAdd({
+              icon: "fa-edit",
+              id:id,
+              title:title,
+              url:url
+            });
+          },
+          //时间轴问卷
+          thingPopupAsk:function(index,value){
+            let id=value.substring(9,21)
+            if(index=="PGurl"){
+              parent.tab.tabAdd({
+                icon: "fa-edit",
+                id:id,
+                title:'评估报告',
+                url:value
+              });
+            }else{
+              parent.tab.tabAdd({
+                icon: "fa-edit",
+                id:id,
+                title:'调查问卷',
+                url:value
+              });
+            }
+          },
+          //点击时间轴查看健康干预方案书
+          ckGyBook:function(){
+            $.ajax({
+              url:'main?xwl=244MTVF6HOKH&pirID='+timeline.pId,
+              type:'post',
+              success:function(r){
+                var data = r,
+                    sid = '';
+                if(r == ''||r == null){
+                  sid = '-1';
+                }else{
+                  sid=r;
+                }
+                parent.tab.tabAdd({
+                  icon:'fa-book',		//font-awesome的图标名 默认fa-file
+                  id:'402',			//id不可重复
+                  title:'干预方案书',
+                  url:'main?xwl=245MNCNJIFL5&pirID='+timeline.pId +'&surveyid='+sid+'&recordId='+timeline.recordIdGY//'244PHGGYF3AG'原先连接（前面的连接于20180205修改用于出报告）
+                });
+              }
+            });
+          },
+          //查看智能诊断结果
+          ckZNZD:function(pageid,id){
+            parent.tab.tabAdd({
+              icon:'fa-book',		//font-awesome的图标名 默认fa-file
+              id:pageid,			//id不可重复
+              title:'智能诊断',
+              url:"main?xwl=245NVETH1KSG&dah="+timeline.man.health_Record_Id+"&name="+timeline.man.name+"&sex="+(timeline.man.sex==1?'男':'女')+"&age="+timeline.man.age+"&znzdID="+id
+            });
+          },
+          //查看智能管理决策结果
+          ckJKGLJC:function(pageid,url){
+            parent.tab.tabAdd({
+              icon:'fa-book',		//font-awesome的图标名 默认fa-file
+              id:pageid,			//id不可重复
+              title:'智能管理决策',
+              url:url
+            });
+          },
+          //点击时间轴查看健康体检结果
+          ckTJBook:function(){
+            parent.tab.tabAdd({
+              icon:'fa-book',
+              id:'TJ'+timeline.recordIdGY,
+              title:'健康体检',
+              url:"main?xwl=244SM7SFD78L&id="+timeline.recordIdGY
+            });
+          },
+          //下面状态轴左边的长度
+          getStoreWidthLeft: function() {
+            if (this.nowStore == '健康') {
+              return '6.25%'
+            } else if (this.nowStore == '低危状态') {
+              return '18.75%'
+            } else if (this.nowStore == '高危状态') {
+              return '31.25%'
+            } else if (this.nowStore == '早期血管病变') {
+              return '43.75%'
+            } else if (this.nowStore == '临床症状') {
+              return '56.25%'
+            } else if (this.nowStore == '心脑血管病') {
+              return '68.75%'
+            } else if (this.nowStore == '转归') {
+              return '81.25%'
+            } else if (this.nowStore == '临终关怀') {
+              return '93.75%'
+            }
+          },
+          //下面状态轴右边的长度
+          getStoreWidthRight: function() {
+
+            if (this.nowStore == '健康') {
+              return '93.75%'
+            } else if (this.nowStore == '低危状态') {
+              return '81.25%'
+            } else if (this.nowStore == '高危状态') {
+              return '68.75%'
+            } else if (this.nowStore == '早期血管病变') {
+              return '56.25%'
+            } else if (this.nowStore == '临床症状') {
+              return '43.75%'
+            } else if (this.nowStore == '心脑血管病') {
+              return '31.25%'
+            } else if (this.nowStore == '转归') {
+              return '18.75%'
+            } else if (this.nowStore == '临终关怀') {
+              return '6.25%'
+            }
+          },
+          //鼠标按下获得拖动开始的状态
+          mouseDown: function(e) {
+            var event = e || window.event;
+            this.moveStart = event.screenX
+            this.move = true;
+            this.moveHistory = this.moveWidth
+          },
+          //当鼠标按下时计算本次滑动的距离
+          mouseMove: function(e) {
+            var event = e || window.event;
+            this.moveLength = event.screenX - this.moveStart
+            if (this.move) {
+              this.moveWidth = this.moveLength + this.moveHistory
+            }
+          },
+          //鼠标弹起时清零
+          mouseUp: function(e) {
+            this.move = false;
+            this.moveHistory = 0
+            this.moveLength = 0
+          },
+          //鼠标滚轴事件，放大缩小
+          zoom: function(event) {
+            y = event.deltaY;
+            if (y > 1) {
+              this.zoomNumber -= 1;
+              this.zoomer = false;
+            } else {
+              this.zoomNumber += 1;
+              this.zoomer = true;
+            }
+          },
+          //卡片颜色
+          assignment: function(name) {
+            if (name == '公卫医师') {
+              return this.role.a
+            } else if (name == '社区医师') {
+              return this.role.c
+            } else if (name == '健康体检师') {
+              return this.role.d
+            } else if (name == '营养师') {
+              return this.role.e
+            } else if (name == '运动师') {
+              return this.role.f
+            } else if (name == '心理医师') {
+              return this.role.g
+            } else if (name == '专科医师') {
+              return this.role.h
+            } else if (name == '康复医师') {
+              return this.role.i
+            } else if(name=='自我管理'){
+              return this.role.j
+            }else{
+              return this.role.b
+            }
+          },
+          //点击时获取卡片的值
+          folderClick: function(a) {
+            this.cordZindex = a
+            console.log(a)
+          },
+          //查看风险评估报告
+          watchPresentation:function(){
+            if(!this.havePresentation){
+              return
+            }
+            this.havePresentation=false
+            $.ajax({
+              url:"main?xwl=245MNCNJIGWS",
+              data:{"pirID":timeline.pId},
+              success:function(r){
+                var data=$.parseJSON(r).rows;
+                if(data.length>0){
+                  $.ajax({ 
+                    url:"main?xwl=245AOQCD15BP",
+                    data:{"tijianhao":data[0].ID,"HEALTH_RECORD_CODE":data[0].HEALTH_RECORD_CODE},
+                    success:function(r){
+                      $.ajax({ 
+                        url:"main?xwl=245MNCNJIHMO",
+                        data:{"pirID":data[0].HEALTH_RECORD_CODE},
+                        success:function(r){
+                          var data=$.parseJSON(r).rows;
+                          if(data[0].WEBREPORTFLAG==1){
+                            timeline.havePresentation=true
+                            parent.tab.tabAdd({
+                              icon: "fa-edit",//
+                              id:`fxpg${data[0].ID}`,
+                              title:'风险评估报告',
+                              //                                   url:`main?xwl=243OV3SZIO8T&tijianhao=${data[0].ID}&pirID=${timeline.pId}&NAME=${data[0].NAME}&PHYSICAL_DATE=${data[0].PHYSICAL_DATE}&WEBREPORTFLAG=${data[0].WEBREPORTFLAG}`
+                              url:`main?xwl=243OV3SZIO8T&tijianhao=${data[0].ID}`
+                            });
+                          }else{
+                            timeline.havePresentation=true
+                            swal("提示！", "没有评估报告","error")
+                          }
+                        }
+                      });
+                    }
+                  });
+                }else{
+                  timeline.havePresentation=true
+                  swal("提示！", "没有体检信息","error")
+                }
+              }
+            });
+          },
+          /////////////////////////////////////////////////////////////////////////
+          //获取智能诊断信息
+          getDiagnosisApi:function(){
+            $.ajax({
+              url:"main?xwl=245BXU52S9KS",
+              data:{"jcblSelectValue":''},
+              success:function(r){
+                var data=$.parseJSON(r).rows;
+                timeline.diagnosisData=data
+                timeline.mask()
+              }
+            });
+          },
+          //新增问卷
+          addTab:function(n,name,num){
+            parent.tab.tabAdd({
+              icon: "fa-edit",
+              id: num,
+              title: name,
+              url:`main?xwl=${n}&uid=${timeline.pId}`
+            });
+          },
+          //弹窗
+          mask: function() {
+            this.handleDiagnosisData()
+            this.maskShow = true
+            this.maskBoxShow=true
+            window.scrollTo(0, 0);
+          },
+          //处理智能诊断的信息
+          handleDiagnosisData: function() {
+            var lists = this.diagnosisData,
+                len = lists.length,
+                userlist = {
+                  a: [],
+                  b: [],
+                  c: [],
+                  d: [],
+                  e: [],
+                  f: [],
+                  g: []
+                };
+            for (var i = 0; i < len; i++) {
+              lists[i].disabledType = false
+              var name = lists[i].KEY_VALUE
+              switch (name) {
+                case '主诉':
+                  userlist.a.push(lists[i])
+                  break;
+                case '发病':
+                  userlist.b.push(lists[i])
+                  break;
+                case '病史':
+                  userlist.c.push(lists[i])
+                  break;
+                case '症状':
+                  userlist.d.push(lists[i])
+                  break;
+                case '体征':
+                  userlist.e.push(lists[i])
+                  break;
+                case '检验':
+                  userlist.f.push(lists[i])
+                  break;
+                case '疾病':
+                  userlist.g.push(lists[i])
+                  break;
+              }
+            }
+            this.diagnosisBoxList = userlist
+            this.diagnosisChooseList = this.diagnosisBoxList.a
+          },
+          //点击智能诊断的按钮控制box
+          chooseBox: function(e) {
+            this.diagnosisType = e.target.innerText
+            switch (this.diagnosisType) {
+              case '主诉':
+                this.diagnosisChooseList = this.diagnosisBoxList.a
+                break;
+              case '发病':
+                this.diagnosisChooseList = this.diagnosisBoxList.b
+                break;
+              case '病史':
+                this.diagnosisChooseList = this.diagnosisBoxList.c
+                break;
+              case '症状':
+                this.diagnosisChooseList = this.diagnosisBoxList.d
+                break;
+              case '体征':
+                this.diagnosisChooseList = this.diagnosisBoxList.e
+                break;
+              case '检验':
+                this.diagnosisChooseList = this.diagnosisBoxList.f
+                break;
+              case '疾病':
+                this.diagnosisChooseList = this.diagnosisBoxList.g
+                break;
+            }
+          },
+          //智能诊断，点击不需要输入的按钮
+          record1: function(id, name, type) {
+            this.diagnosisInputId = ''
+            var item = {
+              ID: id,
+              VARNAME: name,
+              TYPE: type,
+              MESSAGE: '',
+              PIR_ID:this.man.health_Record_Id
+            }
+            this.diagnosisResultList.push(item)
+            this.disabledType(id)
+          },
+          //智能诊断，点击需要输入的按钮
+          record2: function(id) {
+            this.diagnosisInputId = id
+          },
+          //智能诊断，点击关闭按钮，清理
+          inputClose: function() {
+            this.diagnosisInputId = ''
+            this.diagnosisMessage = ''
+          },
+          //智能诊断，点击智能诊断按钮，交互
+          inputRecord: function(id, name,type) {
+            if (this.diagnosisMessage) {
+              var item = {
+                ID: id,
+                VARNAME: name,
+                TYPE: type,
+                MESSAGE: this.diagnosisMessage,
+                PIR_ID:this.man.health_Record_Id
+              }
+              this.diagnosisResultList.push(item)
+              this.disabledType(id)
+              this.diagnosisMessage = ''
+              this.diagnosisInputId = ''
+            }
+            return
+          },
+          //判断是否智能诊断条件是否选择
+          disabledType: function(id) {
+            for (var item in this.diagnosisBoxList) {
+              var len = this.diagnosisBoxList[item].length
+              for (var j = 0; j < len; j++) {
+                if (this.diagnosisBoxList[item][j].ID == id) {
+                  this.diagnosisBoxList[item][j].disabledType = true
+                  this.diagnosisChooseList = this.diagnosisBoxList[item]
+                }
+              }
+            }
+          },
+          //清除智能诊断条件是否选择
+          cleandisabledType: function(id) {
+            for (var item in this.diagnosisBoxList) {
+              var len = this.diagnosisBoxList[item].length
+              for (var j = 0; j < len; j++) {
+                if (this.diagnosisBoxList[item][j].ID == id) {
+                  this.diagnosisBoxList[item][j].disabledType = false
+                  this.diagnosisChooseList = this.diagnosisBoxList[item]
+                }
+              }
+            }
+          },
+          //清除智能诊断条件选择项
+          clean: function(name) {
+            for (var i = 0; i < this.diagnosisResultList.length; i++) {
+              if (this.diagnosisResultList[i].VARNAME == name) {
+                this.cleandisabledType(this.diagnosisResultList[i].ID)
+                this.diagnosisResultList.splice(i, 1)
+              }
+            }
+          },
+          //智能诊断弹窗结果
+          resultId: function(e) {
+            this.diagnosisResultId
+            = e.target.innerText
+          },
+          //健康干预 InterventionDigApi
+          InterventionLevel:function(){
+            $.ajax({
+              url:"main?xwl=245HCYZ7YCSO",//检查是否有健康干预书
+              data:{"pirID":timeline.pId},
+              success:function(r){
+                var data=$.parseJSON(r).rows;
+                timeline.ckbg(timeline.pId,data[0].flag,data[0].report)
+              }
+            });
+          },
+          //健康干预
+          ckbg:function(pirID,isreport,isPg){
+            if(isreport!='1'){
+              swal("提示", "报告未生成，请耐心等待！", "warning");
+              return;
+            }
+            $.ajax({
+              url:'main?xwl=244MTVF6HOKH&pirID='+pirID,
+              type:'post',
+              success:function(r){
+                var data = r,
+                    sid = '';
+                if(r == ''||r == null){
+                  sid = '-1';
+                }else{
+                  sid=r;
+                }
+                $.ajax({
+                  url:'main?xwl=245B2AZZ4PJT&pirID='+pirID,
+                  type:'post',
+                  success:function(r){
+                    var data = $.parseJSON(r).rows,
+                        xlsurvey='';
+                    if(data != null && data.length>=1){
+                      xlsurvey = data[0].SurveyID;
+                    }else{
+                      xlsurvey = '';
+                    }
+                    var tab = parent.tab;
+                    tab.tabAdd({
+                      icon:'fa-pencil',		//font-awesome的图标名 默认fa-file
+                      id:'403',			//id不可重复
+                      title:'生成干预方案',
+                      url:'main?xwl=2454I1W8128I&pirID='+pirID+'&hasRecord = '+sid+"&surveyid="+sid+"&surveyidXl="+xlsurvey+"&isPg="+isPg
+                    });
+                  }
+                });
+              }
+            })
+          },
+          //智能诊断
+          intelligenceRecord:function(){
+            $.ajax({
+              url:"main?xwl=245CUTTINQAJ",//保存决策变量数据
+              data:{"datas":JSON.stringify(timeline.diagnosisResultList)},
+              success:function(r){
+                console.log('success')
+              }
+            });
+          },
+          //暂时的智能诊断
+          intelligentDiagnosis:function(){
+            parent.tab.tabAdd({
+              icon:'',
+              id:"2458U2IXIIM3_"+timeline.man.health_Record_Id,
+              title:"辅助诊疗_"+timeline.man.name,
+              url:"main?xwl=2458U2IXIIM3&dah="+timeline.man.health_Record_Id+"&name="+timeline.man.name+"&sex="+`${timeline.man.sex==1?'男':'女'}`+"&age="+timeline.man.age
+            });
+          },
+          //暂时的健康管理决策
+          HealthManager:function(){
+            console.log(timeline.man.health_Record_Id)
+            parent.tab.tabAdd({
+              icon:'',
+              id:"245OSA2GOYOB"+timeline.man.health_Record_Id,
+              title:"健康管理决策_"+timeline.man.name,
+              url:"main?xwl=245OSA2GOYOB&dah="+timeline.man.health_Record_Id+"&pirID="+timeline.man.health_Record_Id
+            });
+          }
+        },
+
+        watch: {
+          //监视放大倍数，控制放大倍数维持在一个范围，最大放大30倍
+          zoomNumber(val) {
+            if (val < 2) {
+              this.zoomNumber = 1
+            } else if (val > 29) {
+              this.zoomNumber = 30
+            }
+            this.setShow()
+            //去除弹窗
+            this.popupAsk=false
+            //去除时间轴里面的弹窗
+            this.thingPopupTime=''
+            this.triangleTop=0
+            this.popupTop=0
+            this.thingPopupType=''
+            this.thingPopupList=[]
+            this.thingPopupDataRYJL={}
+            this.thingPopupDataMZJL={}
+            this.thingPopupDataNCZJBGL={}
+            this.thingPopupDataTNBJBGL={}
+            this.thingPopupDataGXYJBGL={}
+            this.thingPopupDataGXBJBGL={}
+            this.thingPopupDataZNZD={}
+            this.thingPopupDataJKGLJC={}
+          },
+          //监视鼠标滑动距离
+          moveWidth(val) {
+            this.listNum = Math.ceil(-val / 365)
+            this.listNow = 114 + this.listNum
+            this.setShow()
+            //与滑标绑定，通过改变滑动距离改变滑标值
+            this.range = -this.moveWidth / 365 * 10 + (this.age - 1) * 10
+          },
+          //监视滑标的值，控制滑动距离
+          range(val) {
+            //给滑标设置范围
+            if (this.range < 0) {
+              this.range = 0
+            } else if (this.range > (this.age + 2) * 10) {
+              this.range = (this.age + 2) * 10
+            }
+            this.moveWidth = -(this.range - (this.age - 1) * 10) / 10 * 365
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
